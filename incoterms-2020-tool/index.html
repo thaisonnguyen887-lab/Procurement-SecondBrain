@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<title>Quy trình Incoterms 2020</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+--bg:#f5f3ee; --surface:#fffefb; --fg:#1c1a15; --muted:#69645a; --line:#e0dbcf;
+--accent:#f4c542; --accent-soft:#fbeeb4; --accent-fg:#1c1a15; --ink:#17150f; --ink-fg:#fffefb;
+--seller:#d9782b; --seller-soft:#f9dfc9; --seller-fg:#6b3410;
+--buyer:#2f6fdb; --buyer-soft:#d8e5fa; --buyer-fg:#173a7a;
+--none:#ebe7dd; --none-fg:#8a8578;
+--hi-bg:#f4a7a7; --hi-fg:#5a1414; --mid-bg:#ffe699; --mid-fg:#5a4400; --lo-bg:#a9d08e; --lo-fg:#1f4010;
+--scene-bg:#e7eeee; --mk-a:#ff1f6b; --mk-a-fg:#ffffff; --shadow:0 1px 2px rgba(30,25,10,.06),0 8px 24px rgba(30,25,10,.06);
+--font:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+--bg:#15140f; --surface:#1e1d16; --fg:#f2efe6; --muted:#a8a395; --line:#37342a;
+--accent:#f4c542; --accent-soft:#4b4012; --ink:#f2efe6; --ink-fg:#17150f;
+--seller:#f0974f; --seller-soft:#4a2d16; --seller-fg:#ffd9b8;
+--buyer:#6ea0f5; --buyer-soft:#1d3157; --buyer-fg:#cfe0ff;
+--none:#2a281f; --none-fg:#8d887a;
+--hi-bg:#7a2a2a; --hi-fg:#ffd6d6; --mid-bg:#6b5710; --mid-fg:#fff0bd; --lo-bg:#335c22; --lo-fg:#d9f2c8;
+--scene-bg:#222a2b; --mk-a:#ff4d8d; --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#15140f; --surface:#1e1d16; --fg:#f2efe6; --muted:#a8a395; --line:#37342a;
+--accent:#f4c542; --accent-soft:#4b4012; --ink:#f2efe6; --ink-fg:#17150f;
+--seller:#f0974f; --seller-soft:#4a2d16; --seller-fg:#ffd9b8;
+--buyer:#6ea0f5; --buyer-soft:#1d3157; --buyer-fg:#cfe0ff;
+--none:#2a281f; --none-fg:#8d887a;
+--hi-bg:#7a2a2a; --hi-fg:#ffd6d6; --mid-bg:#6b5710; --mid-fg:#fff0bd; --lo-bg:#335c22; --lo-fg:#d9f2c8;
+--scene-bg:#222a2b; --mk-a:#ff4d8d; --shadow:none; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.55;
+padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--buyer);outline-offset:2px}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:flex-end}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:2px 0 4px;font-size:clamp(24px,4vw,34px);line-height:1.15;font-weight:800;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.risks{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.risks .cap{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.badge.hi{background:var(--hi-bg);color:var(--hi-fg)}
+.badge.mid{background:var(--mid-bg);color:var(--mid-fg)}
+.badge.lo{background:var(--lo-bg);color:var(--lo-fg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.player{padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.controls .cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 14px;font-weight:600;font-size:14px}
+.btn:hover{background:var(--bg)}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn.primary{background:var(--ink);color:var(--ink-fg);border-color:var(--ink)}
+.spacer{flex:1}
+.steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.step{border:0;border-right:1px solid var(--line);background:transparent;padding:12px 10px;display:flex;gap:8px;align-items:center;justify-content:center;text-align:left;font-weight:600;color:var(--muted);line-height:1.25}
+.step:last-child{border-right:0}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:13px}
+.step:hover{background:var(--bg)}
+.step[aria-current="step"]{background:var(--accent-soft);color:var(--fg);font-weight:700}
+.stepswrap{overflow-x:auto}
+@media (max-width:860px){.steps{grid-template-columns:repeat(7,150px)}}
+.step .tx{display:flex;flex-direction:column;gap:4px;align-items:flex-start;min-width:0}
+.pics{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.pic{font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;line-height:1.5;white-space:nowrap}
+.pic.S{background:var(--seller-soft);color:var(--seller-fg)}
+.pic.B{background:var(--buyer-soft);color:var(--buyer-fg)}
+.pics .arr{font-size:12px;color:var(--muted);font-weight:700}
+.picbar{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;font-weight:700;color:var(--muted)}
+.timeline{display:flex;align-items:center;gap:12px}
+.timeline input[type=range]{flex:1;min-width:0;height:24px;background:transparent;-webkit-appearance:none;appearance:none}
+.timeline input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:3px;background:var(--ink)}
+.timeline input[type=range]::-moz-range-track{height:5px;border-radius:3px;background:var(--ink)}
+.timeline input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--ink);border:3px solid var(--surface);margin-top:-7.5px}
+.timeline input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--ink);border:3px solid var(--surface)}
+.time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px;white-space:nowrap}
+.caption{margin:0;font-size:clamp(15px,2vw,18px);font-weight:500;min-height:2.9em;text-wrap:pretty}
+.caption::before{content:"→ ";font-weight:700}
+.stage{position:relative;border-radius:14px;overflow:hidden;background:var(--scene-bg);aspect-ratio:16/8;min-height:300px;touch-action:none;border:1px solid var(--line)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+#labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.lbl{position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:7px;padding:3px 9px 3px 7px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.12);will-change:transform}
+.lbl i{width:13px;height:13px;border:1.5px solid var(--fg);border-radius:3px;flex:none}
+.lbl.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.lbl.on i{background:var(--accent-fg);border-color:var(--accent-fg)}
+.hint{position:absolute;left:10px;bottom:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);color:var(--muted);font-size:13px;padding:5px 10px;border-radius:8px;max-width:calc(100% - 140px)}
+.pad{position:absolute;right:10px;bottom:10px;display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:3px}
+.pad button{border:0;border-radius:8px;background:color-mix(in srgb,var(--surface) 90%,transparent);font-size:16px;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pad .u{grid-column:2;grid-row:1}.pad .l{grid-column:1;grid-row:2}.pad .c{grid-column:2;grid-row:2}.pad .r{grid-column:3;grid-row:2}.pad .d{grid-column:2;grid-row:3}
+.nogl{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;color:var(--muted)}
+.stage:fullscreen{aspect-ratio:auto;border-radius:0}
+.fine{margin:0;color:var(--muted);font-size:13px}
+h2{margin:0 0 8px;font-size:18px;font-weight:700}
+.matrix-card{padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mscroll{overflow-x:auto;padding:4px}
+.mwrap{position:relative;min-width:1000px;padding-top:40px}
+.mkA-line{position:absolute;width:5px;border-radius:3px;background:var(--mk-a);box-shadow:0 0 0 2px color-mix(in srgb,var(--mk-a) 25%,transparent),0 0 14px color-mix(in srgb,var(--mk-a) 60%,transparent);transform:translateX(-50%);pointer-events:none;z-index:3}
+.mkA-pill{position:absolute;top:0;transform:translateX(-50%);display:flex;align-items:center;gap:7px;background:var(--mk-a);color:var(--mk-a-fg);font-weight:800;font-size:13px;letter-spacing:.02em;padding:6px 14px 6px 10px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 12px color-mix(in srgb,var(--mk-a) 45%,transparent);pointer-events:none;z-index:3}
+.mkA-pill::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:var(--mk-a)}
+.mkA-pill svg{width:18px;height:18px;flex:none}
+.lbl.risk,.lbl.risk.on{box-shadow:0 2px 10px color-mix(in srgb,var(--mk-a) 55%,transparent);background:var(--mk-a);color:var(--mk-a-fg);border-color:var(--mk-a)}
+.lbl.risk i,.lbl.risk.on i{border-color:var(--mk-a-fg)}
+.lbl.risk.on i{background:var(--mk-a-fg)}
+.lbl.ins{border-color:var(--seller)}
+.cols{--lw:104px;display:grid;grid-template-columns:var(--lw) repeat(7,minmax(124px,1fr));column-gap:6px}
+.band{position:relative;height:30px}
+.band div{position:absolute;top:0;height:30px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;padding:0 8px}
+.band .s{background:var(--seller-soft);color:var(--seller-fg)}
+.band .b{background:var(--buyer-soft);color:var(--buyer-fg)}
+.cols{row-gap:8px;margin-top:10px;grid-template-rows:repeat(7,auto)}
+.rl{grid-column:1;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;padding-right:6px}
+.col{display:grid;grid-template-rows:subgrid;grid-row:1/span 7;row-gap:8px;position:relative;border-radius:14px}
+.col.sel{outline:2.5px solid var(--ink);outline-offset:4px}
+.head{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 10px;text-align:left;font-weight:700;font-size:14px;line-height:1.25;display:flex;gap:8px;align-items:center;font-family:inherit;color:var(--fg);cursor:pointer}
+.head .n{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:12px}
+.col.sel .head{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.node{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--muted);text-align:center;line-height:1.25}
+.dotrow{position:relative;width:100%;height:30px;display:flex;justify-content:center;align-items:center}
+.dotrow::after{content:"";position:absolute;left:50%;right:-6px;top:50%;height:4px;margin-top:-2px;background:var(--c)}
+.dotrow.end::after{display:none}
+.dot{position:relative;z-index:1;width:16px;height:16px;border-radius:50%;background:var(--c);border:3px solid var(--surface);box-shadow:0 0 0 1.5px var(--c)}
+.c0{--c:var(--seller)}.c1{--c:var(--buyer)}
+.cell{position:relative;border-radius:12px;padding:9px 11px;font-size:13.5px;line-height:1.4;display:flex;align-items:flex-start;min-width:0}
+.cell.S{background:var(--seller-soft);color:var(--fg)}
+.cell.B{background:var(--buyer-soft);color:var(--fg)}
+.cell.N{background:transparent;color:var(--none-fg);border:1px dashed var(--line);align-items:center;justify-content:center;text-align:center}
+.cell.D{background:var(--surface);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.cell.L{background:var(--surface);border:1px solid var(--line);padding:4px 10px;font-size:12.5px;line-height:1.35}
+.cell.L ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;width:100%}
+.cell.L li{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:9px 0}
+.cell.L li+li{border-top:1px dashed var(--line)}
+.cell.L b{font-size:11.5px;font-weight:800;letter-spacing:.03em;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 7px}
+.cell.L .en{color:var(--fg);font-weight:600}
+.cell.L .vn{color:var(--muted);font-weight:400}
+.cell.R.SB{background:linear-gradient(90deg,var(--seller) 0 var(--f),var(--buyer) var(--f) 100%);color:#fff}
+.cell.K{justify-content:center;align-items:center;font-weight:700;font-size:12.5px;text-align:center;border:1.5px solid}
+.cell.K.S{background:var(--seller-soft);border-color:var(--seller);color:var(--seller-fg)}
+.cell.K.B{background:var(--buyer-soft);border-color:var(--buyer);color:var(--buyer-fg)}
+.cell.K.SB{background:linear-gradient(90deg,var(--seller-soft) 0 50%,var(--buyer-soft) 50% 100%);border-color:var(--line);color:var(--fg)}
+.cell.R{justify-content:center;align-items:center;font-weight:700;font-size:13px;text-align:center}
+.cell.R.S{background:var(--seller);color:#fff}
+.cell.R.B{background:var(--buyer);color:#fff}
+:root[data-theme="dark"] .cell.R{color:#15140f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cell.R{color:#15140f}}
+@media (max-width:900px){
+.mwrap{min-width:0;padding-top:0}
+.mkA-line,.mkA-pill,.band,.rl{display:none}
+.cols{display:flex;flex-direction:column;gap:14px;margin-top:0}
+.col{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.col.sel{outline-offset:2px}
+.head{border:0;padding:2px 2px 6px;background:transparent}
+.col.sel .head{background:var(--accent);padding:6px 8px;border-radius:10px}
+.node{flex-direction:row;justify-content:flex-start}
+.dotrow{width:auto;height:auto}.dotrow::after{display:none}
+.cell::before{display:block;content:attr(data-l);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.cell{flex-direction:column;align-items:flex-start}
+.cell.R{flex-direction:row;justify-content:flex-start}.cell.R::before{display:none}
+.xfer::after{content:"Chuyển rủi ro";margin-left:10px;background:var(--mk-a);color:var(--mk-a-fg);padding:2px 10px;border-radius:999px;font-size:12px}
+}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);align-items:center}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+.legend .s::before{background:var(--seller-soft);border:1px solid var(--seller)}
+.legend .b::before{background:var(--buyer-soft);border:1px solid var(--buyer)}
+.legend .m::before{width:5px;height:14px;border-radius:3px;background:var(--mk-a);vertical-align:-2px}
+.legend .sb::before{background:linear-gradient(90deg,var(--seller-soft) 0 50%,var(--buyer-soft) 50% 100%);border:1px solid var(--line)}
+.legend .n::before{border:1px dashed var(--none-fg)}
+.detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.panel{padding:16px;min-width:0}
+.panel h3{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.panel ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.panel p{margin:0}
+.panel.tip{background:var(--accent-soft);border-color:transparent;box-shadow:none}
+.panel.tip h3{color:var(--fg)}
+.advise{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.advise p{margin:0;max-width:90ch}
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:6px}
+.rec{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:14px;min-width:0}
+.rec .rh{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.termnav{padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.tg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tg .gl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.tb{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:5px 11px;font-weight:800;font-size:14px;letter-spacing:.03em;text-decoration:none;color:var(--fg)}
+.tb:hover{background:var(--bg)}
+.tb[aria-current="page"]{background:var(--ink);color:var(--ink-fg);border-color:var(--ink)}
+.xferline{margin:8px 0 0;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;font-size:14px}
+.xferline .xdot{width:10px;height:10px;border-radius:3px;background:var(--mk-a);align-self:center}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="card termnav" aria-label="Chọn điều kiện Incoterms" id="termnav"></nav>
+<header>
+<div>
+<div class="eyebrow" id="eyebrow">Incoterms 2020 · Quy trình giao nhận</div>
+<h1 id="h1">EXW – Ex Works, giao tại xưởng</h1>
+<p class="lead" id="lead"></p>
+<p class="xferline"><span class="xdot"></span><b>Chuyển rủi ro:</b> <span id="xwhere"></span></p>
+</div>
+<div class="risks">
+<span class="cap">Mức độ rủi ro cho người mua</span>
+<div class="badges" id="badges"></div>
+</div>
+</header>
+<section class="card player" aria-label="Quy trình giao nhận">
+<div class="controls">
+<span class="cap">Hiển thị</span>
+<button class="btn" id="btnLabels" aria-pressed="true">Nhãn</button>
+<button class="btn" id="btnFull">⛶ Toàn màn hình</button>
+<button class="btn" id="btnTheme" aria-label="Đổi giao diện sáng/tối">◐</button>
+<span class="spacer"></span>
+<button class="btn primary" id="btnPlay">▶ Phát</button>
+</div>
+<div class="stepswrap"><div class="steps" id="steps"></div></div>
+<div class="timeline">
+<input id="slider" type="range" min="0" max="1000" value="140" aria-label="Tiến trình quy trình">
+<span class="time" id="time">0:05 / 0:42</span>
+</div>
+<p class="caption" id="caption"></p>
+<div class="stage" id="stage">
+<canvas id="cv" aria-label="Mô hình 3D quy trình giao nhận"></canvas>
+<div id="labels"></div>
+<div class="nogl" id="nogl">Trình duyệt không hiển thị được cảnh 3D. Bạn vẫn xem được từng bước ở phần mô tả bên dưới.</div>
+<div class="hint">Kéo để xoay · Shift + kéo để di chuyển · cuộn để phóng to</div>
+<div class="pad">
+<button class="u" data-k="u" aria-label="Nhìn từ trên">↑</button>
+<button class="l" data-k="l" aria-label="Xoay trái">←</button>
+<button class="c" data-k="c" aria-label="Đặt lại góc nhìn">⌖</button>
+<button class="r" data-k="r" aria-label="Xoay phải">→</button>
+<button class="d" data-k="d" aria-label="Nhìn ngang">↓</button>
+</div>
+</div>
+<p class="fine">Mô hình minh họa dựng bằng code (Three.js), không theo tỉ lệ thật. Chặng vận chuyển chính lấy ví dụ đường biển.</p>
+</section>
+<section class="card matrix-card">
+<h2>Ai chịu trách nhiệm ở từng bước</h2>
+<div class="mscroll"><div class="mwrap" id="mwrap"><div class="band" id="band" aria-hidden="true"><div class="s" id="bandS">Người bán chịu rủi ro</div><div class="b" id="bandB">Người mua chịu rủi ro</div></div><div class="cols" id="cols"></div><div class="mkA-line" id="mkLine"></div><div class="mkA-pill" id="mkPill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h15M15 4l4 4-4 4"/><path d="M20 16H5M9 12l-4 4 4 4"/></svg>CHUYỂN RỦI RO</div></div></div>
+<div class="legend"><span class="s">Người bán</span><span class="b">Người mua</span><span class="sb">Chia hai bên</span><span class="n">Không có nghĩa vụ</span><span class="m">Chuyển rủi ro</span></div>
+</section>
+<section class="detail" id="detail"></section>
+<section class="card advise">
+<h2 id="advH">Khi nào nên chọn EXW</h2>
+<p id="advP"></p>
+<div class="recs" id="recs"></div>
+<p class="fine">Nguồn: ICC, Incoterms® 2020 Rules; Institute Cargo Clauses (A), (C) 2009. Mức độ rủi ro, khuyến nghị và danh mục chứng từ là đánh giá thực hành từ góc độ người mua, không thay thế tư vấn pháp lý. Tên chứng từ viết tắt như CI, PL, EXD, IMD là cách viết gọn, không phải ký hiệu của ICC.</p>
+</section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+var clamp=function(x,a,b){a=a===undefined?0:a;b=b===undefined?1:b;return Math.min(b,Math.max(a,x))};
+var sstep=function(x){x=clamp(x);return x*x*(3-2*x)};
+var lerp=function(a,b,t){return a+(b-a)*t};
+var TOTAL=42;
+var ORDER=["EXW","FCA","CPT","CIP","DAP","DPU","DDP","FAS","FOB","CFR","CIF"];
+var GROUPS=[{t:"Mọi phương thức vận tải",c:["EXW","FCA","CPT","CIP","DAP","DPU","DDP"]},{t:"Đường biển & thủy nội địa",c:["FAS","FOB","CFR","CIF"]}];
+var H="hi",M="mid",L="lo";
+var LV={hi:"Cao",mid:"Trung bình",lo:"Thấp"};
+/* flags:
+pre  = ai thuê/trả chặng nội địa nước XK; main = ai ký hợp đồng & trả cước chính; exp/imp = ai thông quan XK/NK
+ins  = bảo hiểm người bán bắt buộc mua (A/C) hoặc null; dlv = cách giao; xp = vị trí chuyển rủi ro (đơn vị bước, 0..7) */
+var TERMS={
+EXW:{en:"Ex Works",vn:"giao tại xưởng",pre:"B",main:"B",exp:"B",imp:"B",ins:null,dlv:"exw",xp:2,rate:[H,M,M],
+lead:"Người bán chỉ đặt hàng dưới quyền định đoạt của người mua tại xưởng. Từ bốc hàng, thông quan, vận chuyển đến bảo hiểm đều do người mua lo.",
+where:"Tại xưởng người bán, hàng chưa bốc lên xe"},
+FCA:{en:"Free Carrier",vn:"giao cho người chuyên chở",pre:"B",main:"B",exp:"S",imp:"B",ins:null,dlv:"fca",xp:2,rate:[M,M,M],
+lead:"Người bán làm thủ tục xuất khẩu và giao hàng cho người chuyên chở do người mua chỉ định. Ví dụ ở đây: giao tại cơ sở người bán, người bán bốc hàng lên xe của người mua.",
+where:"Khi người bán bốc xong hàng lên xe do người mua chỉ định tại cơ sở người bán"},
+CPT:{en:"Carriage Paid To",vn:"cước phí trả tới",pre:"S",main:"S",exp:"S",imp:"B",ins:null,dlv:"carrier",xp:2,rate:[H,H,H],
+lead:"Người bán thuê và trả cước tới nơi đến quy định, nhưng rủi ro chuyển sang người mua ngay khi giao hàng cho người chuyên chở đầu tiên. Ví dụ ở đây: nơi đến là cảng đến.",
+where:"Khi giao hàng cho người chuyên chở do người bán thuê tại nơi giao hàng (ví dụ ở đây: xưởng người bán). Không phải tại nơi đến."},
+CIP:{en:"Carriage and Insurance Paid To",vn:"cước phí và bảo hiểm trả tới",pre:"S",main:"S",exp:"S",imp:"B",ins:"A",dlv:"carrier",xp:2,rate:[H,H,L],
+lead:"Như CPT, cộng thêm nghĩa vụ người bán mua bảo hiểm hàng hóa tối thiểu ICC (A), 110% giá trị. Rủi ro vẫn chuyển sang người mua tại nơi đi. Ví dụ ở đây: nơi đến là cảng đến.",
+where:"Khi giao hàng cho người chuyên chở do người bán thuê tại nơi giao hàng (ví dụ ở đây: xưởng người bán). Không phải tại nơi đến."},
+DAP:{en:"Delivered at Place",vn:"giao tại nơi đến",pre:"S",main:"S",exp:"S",imp:"B",ins:null,dlv:"dap",xp:6.82,rate:[L,L,L],
+lead:"Người bán chịu chi phí và rủi ro đưa hàng tới nơi đến quy định, hàng còn trên phương tiện, sẵn sàng để dỡ. Người mua dỡ hàng và làm thủ tục nhập khẩu. Ví dụ ở đây: nơi đến là kho người mua.",
+where:"Tại kho người mua, hàng còn trên xe, sẵn sàng để dỡ"},
+DPU:{en:"Delivered at Place Unloaded",vn:"giao tại nơi đến đã dỡ hàng",pre:"S",main:"S",exp:"S",imp:"B",ins:null,dlv:"dpu",xp:7,rate:[L,L,L],
+lead:"Như DAP, nhưng người bán phải dỡ hàng xuống tại nơi đến. Đây là điều kiện duy nhất buộc người bán dỡ hàng. Người mua vẫn làm thủ tục nhập khẩu. Ví dụ ở đây: nơi đến là kho người mua.",
+where:"Tại kho người mua, sau khi người bán đã dỡ hàng xuống"},
+DDP:{en:"Delivered Duty Paid",vn:"giao hàng đã nộp thuế",pre:"S",main:"S",exp:"S",imp:"S",ins:null,dlv:"ddp",xp:6.82,rate:[L,L,L],
+lead:"Người bán chịu mọi chi phí và rủi ro tới nơi đến, kể cả thủ tục nhập khẩu, thuế nhập khẩu và VAT. Người mua chỉ dỡ hàng và nhận hàng. Ví dụ ở đây: nơi đến là kho người mua.",
+where:"Tại kho người mua, hàng đã thông quan nhập khẩu, còn trên xe, sẵn sàng để dỡ"},
+FAS:{en:"Free Alongside Ship",vn:"giao dọc mạn tàu",pre:"S",main:"B",exp:"S",imp:"B",ins:null,dlv:"fas",xp:3.62,rate:[M,M,M],
+lead:"Người bán làm thủ tục xuất khẩu và đặt hàng dọc mạn con tàu do người mua chỉ định tại cảng bốc. Việc xếp hàng lên tàu và mọi chặng sau do người mua lo.",
+where:"Khi hàng được đặt dọc mạn tàu tại cảng bốc"},
+FOB:{en:"Free On Board",vn:"giao lên tàu",pre:"S",main:"B",exp:"S",imp:"B",ins:null,dlv:"fob",xp:3.88,rate:[M,M,M],
+lead:"Người bán làm thủ tục xuất khẩu và xếp hàng lên con tàu do người mua chỉ định tại cảng bốc. Rủi ro chuyển khi hàng đã nằm trên tàu; cước biển và bảo hiểm do người mua lo.",
+where:"Khi hàng đã xếp lên tàu tại cảng bốc"},
+CFR:{en:"Cost and Freight",vn:"tiền hàng và cước phí",pre:"S",main:"S",exp:"S",imp:"B",ins:null,dlv:"cfr",xp:3.88,rate:[H,H,H],
+lead:"Người bán thuê tàu, trả cước tới cảng đến, nhưng rủi ro chuyển sang người mua khi hàng đã xếp lên tàu tại cảng bốc. Người bán không có nghĩa vụ mua bảo hiểm.",
+where:"Khi hàng đã xếp lên tàu tại cảng bốc. Không phải tại cảng đến ghi sau chữ CFR."},
+CIF:{en:"Cost, Insurance and Freight",vn:"tiền hàng, bảo hiểm và cước phí",pre:"S",main:"S",exp:"S",imp:"B",ins:"C",dlv:"cif",xp:3.88,rate:[H,H,M],
+lead:"Như CFR, cộng thêm nghĩa vụ người bán mua bảo hiểm tối thiểu ICC (C), 110% giá trị. Rủi ro vẫn chuyển khi hàng đã xếp lên tàu tại cảng bốc.",
+where:"Khi hàng đã xếp lên tàu tại cảng bốc. Không phải tại cảng đến ghi sau chữ CIF."}
+};
+var RECS={"EXW": ["Rủi ro cao nhất: chịu từ cơ sở người bán, gồm cả bốc hàng. Giám định hàng trước khi nhận; cân nhắc FCA thay thế.", "Tránh trả trước 100%. Ưu tiên L/C hoặc TT đối ứng chứng từ/giám định; chốt rõ ai bốc hàng, ai làm thủ tục XK.", "Người mua nên tự mua ICC (A) từ điểm rủi ro chuyển, tối thiểu 110% giá trị, mình là người thụ hưởng."], "FCA": ["Chỉ định forwarder uy tín, ghi rõ địa điểm giao (nên là cơ sở người bán hoặc điểm tập kết). Giám định trước giao; cần B/L on board thì thỏa thuận rõ.", "L/C hoặc TT đối ứng chứng từ giao hàng (biên nhận, B/L/vận đơn, CO, CQ); chia đợt thay vì trả trước toàn bộ.", "Người mua nên tự mua ICC (A) từ điểm rủi ro chuyển, tối thiểu 110% giá trị, mình là người thụ hưởng."], "FAS": ["Chủ động lịch tàu, cut-off; chịu rủi ro bốc xếp lên tàu. Phù hợp hàng rời/siêu trường; hàng container không nên dùng.", "L/C hoặc TT đối ứng chứng từ; kiểm tra biên nhận cảng/mate's receipt khớp hợp đồng.", "Người mua nên tự mua ICC (A) từ điểm rủi ro chuyển, tối thiểu 110% giá trị, mình là người thụ hưởng."], "FOB": ["Kiểm soát booking tàu, cut-off; giám định trước bốc. Hàng container nên dùng FCA vì rủi ro chuyển tại bãi, không phải lúc lên tàu.", "L/C hoặc TT sau khi nhận bộ chứng từ gốc (B/L on board, CO, CQ, packing list); không trả trước toàn bộ.", "Người mua nên tự mua ICC (A) từ điểm rủi ro chuyển, tối thiểu 110% giá trị, mình là người thụ hưởng."], "CPT": ["Người bán trả cước nhưng rủi ro đã chuyển sớm: hàng hỏng/mất trên đường là rủi ro của mình. Cần giám định trước giao và theo dõi vận đơn.", "Giá gồm cước: so sánh với FOB/FCA + cước tự thuê. L/C hoặc TT đối ứng chứng từ vận tải.", "Bắt buộc tự mua ICC (A) vì người bán không phải mua; xác nhận hiệu lực bảo hiểm từ nơi đi."], "CIP": ["Rủi ro chuyển ở nơi đi dù người bán trả cước và bảo hiểm. Giám định trước giao, giữ chứng từ để khiếu nại.", "L/C hoặc TT đối ứng chứng từ, trong đó có giấy chứng nhận bảo hiểm.", "Kiểm tra giấy chứng nhận: mức ICC (A), 110%, người thụ hưởng là mình, hiệu lực đến kho nhận. Bảo hiểm do người bán mua có thể không đủ mức mình cần."], "CFR": ["Rủi ro chuyển khi lên tàu dù người bán trả cước. Theo dõi B/L, hãng tàu; hàng container nên dùng CPT.", "L/C hoặc TT đối ứng B/L gốc; so sánh giá với FOB + cước.", "Bắt buộc tự mua ICC (A) từ lúc hàng lên tàu; người bán không có nghĩa vụ mua."], "CIF": ["Rủi ro chuyển khi lên tàu dù người bán trả cước và bảo hiểm. Giữ đủ bộ chứng từ để đòi bồi thường.", "L/C hoặc TT đối ứng chứng từ gốc (B/L, hóa đơn, giấy chứng nhận bảo hiểm).", "ICC (C) chỉ bảo hiểm rủi ro danh mục hạn chế: yêu cầu người bán mua ICC (A) (có thể phát sinh phí) hoặc tự mua bổ sung."], "DAP": ["Rủi ro thấp: người bán chịu đến nơi đến. Kiểm hàng, lập biên bản ngay khi nhận; chịu chi phí dỡ hàng và thủ tục nhập khẩu.", "Ưu tiên thanh toán sau nhận hàng đạt chất lượng (TT sau nhận, giữ lại tỷ lệ), hạn chế trả trước.", "Không bắt buộc. Cân nhắc bảo hiểm sau khi nhận (dỡ hàng, lưu kho, vận chuyển nội địa)."], "DPU": ["Rủi ro thấp, người bán dỡ hàng. Nơi đến nên là địa điểm có thiết bị dỡ; nhận hàng và lập biên bản ngay tại chỗ.", "Như DAP: TT sau nhận hàng đạt yêu cầu; giữ lại một phần đến khi kiểm xong.", "Không bắt buộc. Cân nhắc bảo hiểm từ khi nhận (kho, vận chuyển nội địa)."], "DDP": ["Rủi ro và nghĩa vụ tối đa cho người bán. Lưu ý: người bán cần đủ tư cách làm thủ tục nhập khẩu tại nước đến, nếu không nên dùng DAP.", "TT sau nhận hàng; kiểm tra giá đã gồm thuế để không bị tính trùng thuế, và hóa đơn/VAT hợp lệ.", "Không bắt buộc. Cân nhắc bảo hiểm sau khi nhận."]};
+var ADV={
+EXW:"Chỉ nên chọn khi người mua có đại lý hoặc forwarder tại nước người bán và tự làm được thủ tục xuất khẩu, hoặc khi mua nội địa, hàng giá trị thấp. Với người bán nước ngoài chưa quen, nên chọn FCA thay thế vì người bán sẽ làm thủ tục xuất khẩu và bốc hàng lên xe.",
+FCA:"Nên chọn khi muốn tự kiểm soát vận tải và cước, hàng đóng container hoặc đa phương thức, người bán đủ năng lực làm thủ tục xuất khẩu. Là lựa chọn tốt nhất trong nhóm F.",
+FAS:"Chỉ chọn cho hàng rời hoặc hàng siêu trường giao tại cảng, khi người mua thuê tàu riêng. Hàng container không phù hợp.",
+FOB:"Chọn khi có forwarder hoặc hãng tàu tốt, giá cước ưu đãi, hàng rời hoặc đường biển truyền thống và người bán đáng tin. Hàng container nên chuyển sang FCA.",
+CPT:"Chọn khi muốn người bán lo vận tải (đa phương thức), người bán uy tín, hàng giá trị thấp đến trung bình và người mua chủ động mua bảo hiểm riêng. Cần giám định trước giao.",
+CIP:"Nên chọn khi nhập hàng giá trị cao bằng container hoặc đa phương thức, từ người bán mới, hoặc muốn giá trọn gói đã có bảo hiểm ICC (A). Là lựa chọn tốt nhất trong nhóm C cho hàng container.",
+CFR:"Chọn cho hàng rời đường biển khi người mua đã có hợp đồng bảo hiểm bao (open cover) và muốn tự mua bảo hiểm. Nhớ bảo hiểm từ lúc hàng lên tàu.",
+CIF:"Chỉ chọn cho hàng rời đường biển khi người mua chưa có bảo hiểm hoặc L/C yêu cầu CIF, và đã thỏa thuận nâng lên ICC (A). Hàng container nên dùng CIP.",
+DAP:"Nên chọn khi người mua ít kinh nghiệm vận tải quốc tế, muốn giá về tận nơi, nhưng vẫn tự làm nhập khẩu để kiểm soát thuế và thủ tục hải quan, và có sẵn thiết bị dỡ hàng.",
+DPU:"Chọn khi nơi nhận không có thiết bị dỡ, hàng cồng kềnh hoặc cần người bán dỡ tại chỗ; người mua vẫn tự làm thủ tục nhập khẩu.",
+DDP:"Chỉ chọn khi hàng nhỏ lẻ hoặc hàng mẫu, người mua không muốn làm thủ tục nhập khẩu và người bán có tư cách nhập khẩu tại nước đến. Tránh khi thuế, VAT khó kiểm soát hoặc cần chứng từ nhập khẩu đứng tên người mua."
+};
+var DC={
+CI:["CI","Commercial Invoice","Hóa đơn thương mại"],
+PL:["PL","Packing List","Phiếu đóng gói"],
+COA:["COA","Certificate of Analysis / Quality (nếu hợp đồng yêu cầu)","Chứng nhận phân tích / chất lượng"],
+DR:["DR","Delivery Receipt","Biên bản giao nhận hàng"],
+IC:["IC","Inspection Certificate (nếu thuê giám định)","Chứng thư giám định"],
+FCR:["FCR","Forwarder's Cargo Receipt","Biên nhận hàng của forwarder"],
+TO:["TO","Transport Order","Lệnh điều xe / vận chuyển"],
+BKG:["BKG","Booking Confirmation","Xác nhận đặt chỗ"],
+EIR:["EIR","Equipment Interchange Receipt (hàng container)","Phiếu giao nhận container"],
+EXD:["EXD","Export Customs Declaration","Tờ khai hải quan xuất khẩu"],
+CO:["C/O","Certificate of Origin (nếu cần)","Giấy chứng nhận xuất xứ"],
+EL:["EL","Export Licence / Permit (nếu có)","Giấy phép xuất khẩu"],
+DOCK:["D/R","Dock Receipt","Biên nhận hàng tại cầu cảng"],
+MR:["M/R","Mate's Receipt","Biên lai thuyền phó (hàng đã lên tàu)"],
+BL:["B/L","Bill of Lading","Vận đơn đường biển"],
+BLOB:["B/L","Shipped on Board Bill of Lading","Vận đơn đã xếp hàng lên tàu"],
+SWB:["SWB","Sea Waybill (thay B/L nếu có)","Giấy gửi hàng đường biển"],
+MTD:["MTD","Multimodal Transport Document (nếu đa phương thức)","Chứng từ vận tải đa phương thức"],
+AWB:["AWB","Air Waybill (nếu đi đường hàng không)","Vận đơn hàng không"],
+INSB:["INS","Marine Insurance Certificate / Policy (người mua tự mua, nên ICC A)","Giấy chứng nhận / đơn bảo hiểm hàng hóa"],
+INSA:["INS","Insurance Certificate / Policy, ICC (A), tối thiểu 110%","Giấy chứng nhận / đơn bảo hiểm (người bán mua)"],
+INSC:["INS","Insurance Certificate / Policy, ICC (C), tối thiểu 110%","Giấy chứng nhận / đơn bảo hiểm (người bán mua)"],
+IMD:["IMD","Import Customs Declaration","Tờ khai hải quan nhập khẩu"],
+AN:["A/N","Arrival Notice","Thông báo hàng đến"],
+DO:["D/O","Delivery Order","Lệnh giao hàng"],
+SET:["CI · PL · B/L","Import document set (Invoice, Packing List, B/L)","Bộ chứng từ nhập khẩu"],
+TAX:["TAX","Import duty & VAT payment receipt","Chứng từ nộp thuế nhập khẩu, VAT"],
+DN:["DN","Delivery Note","Phiếu giao hàng"],
+GRN:["GRN","Goods Receipt Note","Phiếu / biên bản nhập kho"],
+PA:["PA","Payment Advice / T/T Remittance (hoặc L/C)","Chứng từ thanh toán / giấy báo chuyển tiền"],
+POD:["POD","Proof of Delivery","Biên bản xác nhận giao hàng tại nơi đến"]
+};
+function dc(){var a=[];for(var i=0;i<arguments.length;i++)a.push(DC[arguments[i]]);return a}
+function genSteps(code){
+var c=TERMS[code],F=(code==="FCA"||code==="FAS"||code==="FOB"),C=(code==="CPT"||code==="CIP"||code==="CFR"||code==="CIF"),
+D=(code==="DAP"||code==="DPU"||code==="DDP"),sea=(code==="FAS"||code==="FOB"||code==="CFR"||code==="CIF"),
+multi=!sea,st=[];
+var buyIns="Tự mua bảo hiểm hàng hóa, khuyến nghị ICC (A), tối thiểu 110% giá trị, hiệu lực từ điểm chuyển rủi ro";
+st.push({t:"Chuẩn bị hàng",place:"Xưởng người bán",
+s:"Kiểm tra, đóng gói, đánh dấu hàng; chuẩn bị chứng từ xuất khẩu",
+b:F?"Chỉ định người chuyên chở hoặc tàu, báo thời gian và địa điểm nhận hàng":C?"Xác nhận lịch giao hàng và nơi đến; chuẩn bị bảo hiểm nếu cần":(code==="DDP"?"Cung cấp thông tin để người bán làm thủ tục nhập khẩu":"Xác nhận địa điểm giao; chuẩn bị hồ sơ nhập khẩu"),
+docs:dc("CI","PL","COA"),
+cap:"Người bán kiểm tra chất lượng, đóng gói, đánh dấu hàng và chuẩn bị chứng từ. Chi phí các việc này do người bán chịu.",
+seller:["Kiểm tra, cân, đếm hàng cần thiết để giao","Đóng gói và đánh dấu hàng phù hợp với phương thức vận tải","Chuẩn bị hóa đơn thương mại và chứng từ hợp đồng yêu cầu; xin giấy phép xuất khẩu nếu có"],
+buyer:F?["Ký hợp đồng vận tải và báo cho người bán tên người chuyên chở hoặc tàu, thời gian và địa điểm nhận hàng","Cân nhắc cử giám định kiểm hàng trước khi giao"]
+:C?["Thống nhất cảng hoặc nơi đến quy định trong hợp đồng","Cân nhắc cử giám định trước giao vì rủi ro sẽ chuyển sớm ở nơi đi"]
+:(code==="DDP"?["Cung cấp mã số thuế, thông tin nhà nhập khẩu và giấy phép (nếu có) để người bán làm thủ tục nhập khẩu"]:["Xác nhận địa chỉ giao hàng và khả năng tiếp nhận (giờ nhận, lối xe vào)","Chuẩn bị hồ sơ nhập khẩu: mã HS, giấy phép, kiểm tra chuyên ngành nếu có"]),
+tip:F?"Ghi rõ quy cách đóng gói, ký mã hiệu và tiêu chuẩn kiểm tra. Người mua chỉ định vận tải nên cần báo lịch sớm để tránh phát sinh phí lưu kho tại người bán."
+:C?"Nhóm C: người bán chọn hãng vận tải. Nên quy định hãng tàu hoặc tiêu chuẩn hãng tàu, thời gian vận chuyển tối đa trong hợp đồng."
+:"Nhóm D: người bán chịu rủi ro tới nơi đến nên giá thường cao hơn. So sánh với FCA hoặc CIP cộng chi phí tự lo để đánh giá giá."});
+var b2={place:"Tại xưởng, lên xe"};
+if(code==="FCA"){b2.t="Bốc hàng lên xe người mua";b2.place="Điểm giao FCA (xưởng người bán)";
+b2.s="Bốc hàng lên phương tiện do người mua chỉ định";b2.b="Điều xe hoặc forwarder tới nhận hàng, kiểm đếm, ký nhận";
+b2.docs=dc("DR","FCR","IC");
+b2.cap="Người bán bốc hàng lên xe do người mua chỉ định tại cơ sở người bán. Đây là điểm giao FCA: rủi ro chuyển sang người mua khi bốc xong.";
+b2.seller=["Bốc hàng lên phương tiện của người chuyên chở do người mua chỉ định","Báo cho người mua hàng đã được giao"];
+b2.buyer=["Đưa phương tiện tới đúng thời gian, địa điểm đã báo","Kiểm đếm, ký biên bản giao nhận; chịu rủi ro từ lúc hàng bốc xong"];
+b2.tip="Ghi rõ địa điểm giao trong hợp đồng (ví dụ: FCA kho người bán, địa chỉ cụ thể). Nếu L/C cần vận đơn đã xếp hàng, thỏa thuận theo điều khoản mới của FCA 2020 để người mua yêu cầu người chuyên chở cấp B/L on board cho người bán.";}
+else if(code==="CPT"||code==="CIP"){b2.t="Giao cho người chuyên chở đầu tiên";b2.place="Điểm giao (xưởng người bán)";
+b2.s="Ký hợp đồng vận tải tới nơi đến, giao hàng cho người chuyên chở đầu tiên";b2.b="Nhận thông báo giao hàng, theo dõi lô hàng";
+b2.docs=dc("BKG","DR","IC");
+b2.cap="Người bán giao hàng cho người chuyên chở đầu tiên do mình thuê. Rủi ro chuyển sang người mua ngay tại đây, dù cước tới nơi đến vẫn do người bán trả.";
+b2.seller=["Ký hợp đồng vận tải từ nơi giao tới nơi đến quy định","Giao hàng cho người chuyên chở đầu tiên, báo cho người mua"].concat(code==="CIP"?["Mua bảo hiểm ICC (A), tối thiểu 110% giá trị, hiệu lực từ điểm giao"]:[]);
+b2.buyer=["Nhận thông báo giao hàng và theo dõi lô hàng","Chịu rủi ro mất mát, hư hỏng kể từ lúc này"];
+b2.tip=code==="CIP"?"Rủi ro đã thuộc người mua từ đây. Kiểm tra giấy chứng nhận bảo hiểm người bán mua: ICC (A), 110%, người mua được bồi thường, hiệu lực từ điểm giao. Nên ghi rõ cả nơi giao hàng lẫn nơi đến trong hợp đồng.":"Điểm dễ hiểu nhầm của nhóm C: người bán trả cước nhưng rủi ro đã thuộc người mua từ nơi đi. Người mua phải tự mua bảo hiểm có hiệu lực từ thời điểm này. Nên ghi rõ cả nơi giao hàng lẫn nơi đến trong hợp đồng; nếu không ghi nơi giao, rủi ro chuyển khi giao cho người chuyên chở đầu tiên tại điểm người bán chọn.";}
+else{b2.t="Bốc hàng lên xe";b2.place="Tại xưởng, trên xe người bán";
+b2.s="Bốc hàng lên xe của mình hoặc xe do mình thuê";b2.b=null;
+b2.docs=dc("TO","BKG","IC");
+b2.cap="Người bán bốc hàng lên xe của mình hoặc xe do mình thuê. Rủi ro và chi phí vẫn thuộc người bán.";
+b2.seller=["Bốc hàng lên phương tiện, chịu chi phí bốc hàng","Đặt chỗ vận chuyển"+(sea&&code!=="CFR"&&code!=="CIF"?" ra cảng":" theo lịch tàu")];
+b2.buyer=["Không có nghĩa vụ ở bước này"].concat(code==="FAS"||code==="FOB"?["Đã báo tên tàu, thời gian và vị trí xếp hàng cho người bán"]:[]);
+b2.tip="Có thể cử giám định kiểm hàng khi bốc tại xưởng. Chi phí giám định trước giao thường do người mua chịu nếu là yêu cầu riêng của người mua.";}
+st.push(b2);
+var pS=c.pre==="S";
+st.push({t:"Vận chuyển ra cảng đi",place:"Trên xe tải",
+s:code==="FCA"?null:(code==="CPT"||code==="CIP")?"Trả cước chặng nội địa (nằm trong cước tới nơi đến)":"Chở hàng ra cảng đi, trả cước nội địa",
+b:code==="FCA"?"Xe của người mua chở hàng ra cảng hoặc bãi container, trả cước":(code==="CPT"||code==="CIP")?"Chịu rủi ro hàng trên đường, theo dõi lô hàng":null,
+docs:dc("TO","EIR"),
+cap:code==="FCA"?"Xe do người mua thuê chở hàng ra cảng đi. Rủi ro và chi phí chặng này thuộc người mua.":(code==="CPT"||code==="CIP")?"Người chuyên chở của người bán chở hàng ra cảng đi. Cước do người bán trả, nhưng rủi ro thuộc người mua.":"Người bán chở hàng ra cảng đi. Chi phí và rủi ro chặng này vẫn thuộc người bán.",
+seller:code==="FCA"?["Không có nghĩa vụ vận chuyển sau khi đã giao hàng"]:["Trả cước vận chuyển nội địa ra cảng đi"],
+buyer:code==="FCA"?["Trả cước nội địa, chịu rủi ro trên đường","Hạ container, giao hàng cho hãng tàu theo booking của mình"]:(code==="CPT"||code==="CIP")?["Chịu rủi ro hàng trên đường dù không trả cước","Theo dõi lô hàng qua người chuyên chở"]:["Không có nghĩa vụ ở bước này"],
+tip:code==="FCA"?"Chọn forwarder có bảo hiểm trách nhiệm. Bảo hiểm hàng hóa cần có hiệu lực từ cơ sở người bán.":(code==="CPT"||code==="CIP")?"Hư hỏng trên chặng này là rủi ro của người mua; người mua khiếu nại người chuyên chở hoặc bảo hiểm, không đòi được người bán nếu hàng đã giao đúng.":"Người mua chưa chịu rủi ro. Theo dõi lịch tàu và cut-off để tránh trễ chuyến."});
+var b4={t:"Thông quan XK & xếp tàu",place:"Cảng đi",docs:dc("EXD","CO","EL")};
+if(code==="FCA"){b4.s="Làm thủ tục, nộp phí xuất khẩu (hoàn tất khi giao hàng)";b4.b="Forwarder hạ bãi, xếp hàng lên tàu, trả phí xếp dỡ tại cảng đi";
+b4.cap="Người bán chịu trách nhiệm thông quan xuất khẩu; người mua (qua forwarder) lo xếp hàng lên tàu và các phí tại cảng đi.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu, xin giấy phép nếu có","Cung cấp chứng từ xuất khẩu cho người mua"];
+b4.buyer=["Chịu phí hạ bãi, xếp hàng lên tàu theo hợp đồng vận tải của mình","Nhận vận đơn từ hãng tàu"];
+b4.tip="Theo FCA, người bán phải thông quan xuất khẩu; thực tế tờ khai được đăng ký trước khi bốc hàng. Chi phí tại cảng đi do người mua trả theo hợp đồng vận tải.";}
+else if(code==="CPT"||code==="CIP"){b4.s="Làm thủ tục xuất khẩu; người chuyên chở của mình xếp hàng lên tàu";b4.b="Theo dõi lịch tàu, nhận thông báo giao hàng";
+b4.cap="Người bán thông quan xuất khẩu và trả phí xếp hàng lên tàu (nằm trong cước). Rủi ro trong lúc xếp hàng thuộc người mua.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu","Trả phí xếp hàng tại cảng đi theo hợp đồng vận tải"];
+b4.buyer=["Theo dõi lịch tàu","Chịu rủi ro nếu hàng hư hỏng khi xếp lên tàu"];
+b4.tip="Yêu cầu người bán gửi ngay vận đơn hoặc chứng từ vận tải để theo dõi lô hàng và mua bảo hiểm kịp thời.";}
+else if(code==="FAS"){b4.t="Thông quan XK & giao dọc mạn tàu";b4.s="Làm thủ tục xuất khẩu, đặt hàng dọc mạn tàu do người mua chỉ định";b4.b="Xếp hàng lên tàu, trả phí bốc xếp";
+b4.docs=dc("EXD","CO","DOCK");
+b4.cap="Người bán thông quan xuất khẩu và đặt hàng dọc mạn tàu tại cảng bốc. Rủi ro chuyển sang người mua tại đây; người mua lo xếp hàng lên tàu.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu","Đặt hàng dọc mạn tàu (trên cầu cảng hoặc sà lan) đúng vị trí người mua chỉ định"];
+b4.buyer=["Chỉ định tàu, báo vị trí xếp hàng","Chịu chi phí và rủi ro xếp hàng lên tàu"];
+b4.tip="Nếu tàu đến trễ hoặc không nhận hàng, người mua chịu rủi ro và chi phí phát sinh. Không dùng FAS cho hàng container.";}
+else if(code==="FOB"){b4.t="Thông quan XK & xếp lên tàu";b4.s="Làm thủ tục xuất khẩu, xếp hàng lên tàu do người mua chỉ định";b4.b="Chỉ định tàu, báo tên tàu và thời gian xếp hàng";
+b4.docs=dc("EXD","CO","MR");
+b4.cap="Người bán thông quan xuất khẩu và xếp hàng lên con tàu do người mua chỉ định. Rủi ro chuyển khi hàng đã nằm trên tàu.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu","Xếp hàng lên tàu, chịu chi phí đến khi hàng nằm trên tàu"];
+b4.buyer=["Chỉ định tàu, báo đủ thời gian cho người bán","Chịu rủi ro kể từ khi hàng đã xếp lên tàu"];
+b4.tip="Hàng container được giao cho hãng tàu tại bãi (CY) trước khi lên tàu, nên người bán vẫn chịu rủi ro khi hàng đã ra khỏi tầm kiểm soát của mình. ICC khuyên dùng FCA cho hàng container.";}
+else if(code==="CFR"||code==="CIF"){b4.t="Thông quan XK & xếp lên tàu";b4.s="Làm thủ tục xuất khẩu, thuê tàu, xếp hàng lên tàu";b4.b="Nhận thông báo đã xếp hàng; rủi ro chuyển khi hàng lên tàu";
+b4.docs=dc("EXD","CO","MR");
+b4.cap="Người bán thông quan xuất khẩu và xếp hàng lên tàu do mình thuê. Rủi ro chuyển sang người mua khi hàng đã nằm trên tàu, dù cước tới cảng đến do người bán trả.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu","Thuê tàu, xếp hàng lên tàu, báo cho người mua"].concat(code==="CIF"?["Mua bảo hiểm ICC (C), tối thiểu 110% giá trị"]:[]);
+b4.buyer=["Nhận thông báo đã xếp hàng","Chịu rủi ro kể từ khi hàng đã xếp lên tàu"];
+b4.tip=code==="CIF"?"Bảo hiểm ICC (C) chỉ bồi thường một số rủi ro chính. Nên thỏa thuận người bán mua ICC (A) hoặc người mua tự mua bổ sung.":"Người bán không phải mua bảo hiểm. Người mua phải tự mua bảo hiểm có hiệu lực từ lúc hàng lên tàu tại cảng bốc.";}
+else{b4.s="Làm thủ tục xuất khẩu, xếp hàng lên tàu";b4.b=null;
+b4.docs=dc("EXD","CO","MR");
+b4.cap="Người bán thông quan xuất khẩu và xếp hàng lên tàu. Chi phí và rủi ro vẫn thuộc người bán.";
+b4.seller=["Làm thủ tục, nộp thuế và phí xuất khẩu","Xếp hàng lên tàu, trả phí tại cảng đi"];
+b4.buyer=["Không có nghĩa vụ ở bước này"];
+b4.tip="Người mua chưa chịu rủi ro. Yêu cầu người bán gửi thông tin tàu và chứng từ để chuẩn bị nhập khẩu.";}
+st.push(b4);
+var b5={t:"Vận chuyển quốc tế",place:"Trên tàu (ví dụ)"};
+if(c.main==="B"){b5.s=null;b5.b="Ký hợp đồng vận tải, trả cước, tự mua bảo hiểm ICC (A)";
+b5.docs=sea?dc("BL","SWB","INSB"):dc("BL","SWB","AWB","INSB");
+b5.cap="Người mua trả cước và chịu rủi ro suốt chặng vận chuyển quốc tế. Người bán không có nghĩa vụ vận chuyển hay bảo hiểm.";
+b5.seller=["Không có nghĩa vụ vận chuyển hoặc bảo hiểm"].concat(code==="FOB"||code==="FAS"?["Cung cấp chứng từ chứng minh đã giao hàng (biên lai, vận đơn nếu có)"]:[]);
+b5.buyer=["Ký hợp đồng vận tải, trả cước, nhận vận đơn",buyIns];
+b5.tip="Nhóm F: người mua kiểm soát hãng tàu và cước. Đảm bảo bảo hiểm có hiệu lực từ điểm chuyển rủi ro, không chỉ từ cảng.";}
+else{
+var insTx=c.ins==="A"?"; mua bảo hiểm ICC (A)":c.ins==="C"?"; mua bảo hiểm ICC (C)":"";
+b5.s="Trả cước tới "+(D?"nơi đến":"cảng đến")+insTx+"; gửi vận đơn cho người mua";
+b5.b=C?"Chịu rủi ro hàng trên đường; nhận bộ chứng từ, thanh toán":null;
+b5.docs=(sea?dc("BLOB","SWB"):dc("BL","MTD","AWB")).concat(c.ins==="A"?[DC.INSA]:c.ins==="C"?[DC.INSC]:C?[DC.INSB]:[]);
+b5.cap=C?"Người bán trả cước tới cảng đến"+(c.ins?" và mua bảo hiểm cho người mua":"")+", nhưng hàng trên đường là rủi ro của người mua."
+:"Người bán trả cước và chịu rủi ro suốt chặng vận chuyển quốc tế. Người mua chưa chịu rủi ro.";
+b5.seller=["Trả cước tới "+(D?"nơi đến quy định":"cảng đến quy định"),"Gửi vận đơn hoặc chứng từ vận tải cho người mua"].concat(c.ins==="A"?["Mua bảo hiểm ICC (A), tối thiểu 110% giá trị, cung cấp chứng từ bảo hiểm"]:c.ins==="C"?["Mua bảo hiểm ICC (C), tối thiểu 110% giá trị, cung cấp chứng từ bảo hiểm"]:[]);
+b5.buyer=C?["Chịu rủi ro hàng trên đường","Nhận bộ chứng từ, thanh toán theo L/C hoặc TT đối ứng chứng từ"].concat(c.ins?[]:[buyIns]):["Không có nghĩa vụ; theo dõi lịch tàu để chuẩn bị nhận hàng"];
+b5.tip=C?(c.ins==="A"?"Bảo hiểm ICC (A) đã có sẵn. Kiểm tra mức bồi thường, đồng tiền và nơi giải quyết bồi thường tại nước người mua.":c.ins==="C"?"ICC (C) không bảo hiểm nhiều rủi ro thường gặp (ví dụ: hư hỏng do nước mưa, trộm cắp). Cân nhắc mua thêm.":"Người bán không mua bảo hiểm. Nếu người mua không tự mua, hàng mất trên tàu sẽ không ai bồi thường.")
+:"Người bán chịu rủi ro nên tự quyết định có mua bảo hiểm hay không. Người mua không cần mua bảo hiểm chặng này.";}
+st.push(b5);
+var b6={t:"Dỡ hàng & thông quan nhập khẩu",place:"Cảng đến",docs:dc("IMD","AN","DO","SET")};
+if(code==="DDP"){b6.s="Làm thủ tục nhập khẩu, nộp thuế nhập khẩu, VAT và phí";b6.b="Cung cấp thông tin hỗ trợ khi người bán yêu cầu";
+b6.docs=dc("IMD","AN","DO","TAX");
+b6.cap="Người bán làm thủ tục nhập khẩu tại nước người mua, nộp thuế nhập khẩu và VAT. Rủi ro vẫn thuộc người bán.";
+b6.seller=["Khai báo nhập khẩu, nộp thuế nhập khẩu, VAT và các phí","Nhận hàng tại cảng đến, trả phí cảng"];
+b6.buyer=["Cung cấp thông tin, giấy phép khi người bán yêu cầu"];
+b6.tip="Người bán cần có tư cách làm thủ tục nhập khẩu tại nước người mua. Nếu không, nên chọn DAP. VAT nhập khẩu do người bán nộp thì người mua có thể không được khấu trừ.";}
+else if(code==="DAP"||code==="DPU"){b6.s="Dỡ hàng tại cảng, trả phí; hỗ trợ chứng từ cho người mua";b6.b="Khai báo, nộp thuế và phí nhập khẩu";
+b6.cap="Người mua làm thủ tục và nộp thuế nhập khẩu. Người bán vẫn chịu rủi ro và chi phí đưa hàng qua cảng.";
+b6.seller=["Dỡ hàng tại cảng đến, trả phí cảng theo hợp đồng vận tải","Cung cấp chứng từ để người mua làm thủ tục nhập khẩu"];
+b6.buyer=["Khai báo nhập khẩu, nộp thuế và phí","Hoàn tất thông quan kịp thời để không làm chậm việc giao hàng"];
+b6.tip="Nếu người mua thông quan chậm, chi phí lưu bãi phát sinh có thể do người mua chịu. Chuẩn bị đủ hồ sơ trước khi hàng đến.";}
+else{b6.s=C?"Trả phí dỡ hàng nếu đã nằm trong hợp đồng vận tải":null;b6.b="Khai báo, nộp thuế và phí nhập khẩu; nhận hàng từ tàu";
+b6.cap="Hàng được dỡ xuống bãi cảng đến. Người mua khai báo nhập khẩu, nộp thuế và phí; sau khi thông quan hàng mới được đưa đi.";
+b6.seller=C?["Chỉ trả phí dỡ hàng tại cảng đến nếu phí này nằm trong hợp đồng vận tải"]:["Không có nghĩa vụ ở bước này"];
+b6.buyer=["Khai báo nhập khẩu, nộp thuế và phí","Nhận hàng dỡ từ tàu, xử lý phí cảng và phí lưu bãi nếu có"];
+b6.tip=C?"Phí tại cảng đến (THC, D/O, lưu bãi) dễ bị đội lên khi hãng tàu do người bán chọn. Hỏi trước bảng phí local charges.":"Chuẩn bị đủ bộ chứng từ (vận đơn, hóa đơn, packing list, C/O nếu cần) trước khi tàu đến để tránh phí lưu bãi.";}
+st.push(b6);
+var b7={place:"Kho người mua"};
+if(D){b7.t=code==="DPU"?"Giao & dỡ hàng tại kho":"Giao tại kho người mua";
+b7.s=code==="DPU"?"Chở hàng tới kho người mua và dỡ hàng xuống":"Chở hàng tới kho, giao trên xe sẵn sàng để dỡ";
+b7.b=code==="DPU"?"Kiểm tra, ký nhận, nhập kho":"Dỡ hàng, kiểm tra, nhập kho";
+b7.docs=dc("DN","POD","GRN","PA");
+b7.cap=code==="DPU"?"Người bán chở hàng tới kho người mua và dỡ hàng xuống. Rủi ro chuyển sang người mua khi hàng đã dỡ xong.":
+"Người bán chở hàng tới kho người mua, hàng còn trên xe sẵn sàng để dỡ. Rủi ro chuyển tại đây; người mua dỡ hàng và nhập kho.";
+b7.seller=code==="DPU"?["Chở hàng tới nơi đến, dỡ hàng xuống, chịu chi phí và rủi ro dỡ hàng","Nhận thanh toán theo hợp đồng"]:["Chở hàng tới nơi đến, đặt hàng dưới quyền định đoạt của người mua trên phương tiện","Nhận thanh toán theo hợp đồng"];
+b7.buyer=code==="DPU"?["Kiểm tra số lượng, chất lượng, ký biên bản, nhập kho","Thanh toán theo hợp đồng"]:["Dỡ hàng, chịu chi phí và rủi ro dỡ hàng","Kiểm tra, ký biên bản, nhập kho, thanh toán theo hợp đồng"];
+b7.tip=code==="DPU"?"Nơi đến phải dỡ hàng được (có mặt bằng, lối xe). Ghi rõ vị trí dỡ trong hợp đồng.":"Ghi rõ địa chỉ, giờ nhận hàng. Chuẩn bị xe nâng hoặc nhân công dỡ hàng ngay khi xe đến để tránh phí chờ.";}
+else{b7.t="Vận chuyển nội địa & nhập kho";b7.s="Nhận thanh toán theo hợp đồng";b7.b="Thuê xe chở hàng về kho, kiểm tra, nhập kho";
+b7.docs=dc("DN","GRN","PA");
+b7.cap="Sau thông quan, hàng được bốc lên xe tải nội địa của người mua chở về kho. Người mua kiểm tra và nhập kho.";
+b7.seller=["Nhận thanh toán theo hợp đồng (Incoterms không quy định thanh toán)"];
+b7.buyer=["Bốc hàng lên xe, thuê xe vận chuyển nội địa, chịu cước và rủi ro","Kiểm tra số lượng, chất lượng, nhập kho"];
+b7.tip=(code==="CPT"||code==="CIP")?"Nếu nơi đến quy định là kho người mua (thay vì cảng đến), cước chặng này do người bán trả, nhưng rủi ro vẫn thuộc người mua.":"Bảo hiểm cần phủ đến tận kho người mua (điều khoản kho tới kho). Lập biên bản ngay nếu hàng thiếu hoặc hỏng để khiếu nại.";}
+st.push(b7);
+return st;
+}
+var COST={EXW:"SSBBBBB",FCA:["S","S","B","SB","B","B","B"],CPT:"SSSSSBB",CIP:"SSSSSBB",DAP:["S","S","S","S","S","SB","SB"],DPU:["S","S","S","S","S","SB","S"],DDP:"SSSSSSS".split("").slice(0,6).concat(["SB"]),
+FAS:["S","S","S","SB","B","B","B"],FOB:"SSSSBBB",CFR:"SSSSSBB",CIF:"SSSSSBB"};
+var PICS={EXW:["S","SB","B","B","B","B","B"],FCA:["S","SB","B","SB","B","B","B"],CPT:["S","S","S","S","S","B","B"],CIP:["S","S","S","S","S","B","B"],
+DAP:["S","S","S","S","S","SB","SB"],DPU:["S","S","S","S","S","SB","SB"],DDP:["S","S","S","S","S","S","SB"],
+FAS:["S","S","S","SB","B","B","B"],FOB:["S","S","S","SB","B","B","B"],CFR:["S","S","S","S","S","B","B"],CIF:["S","S","S","S","S","B","B"]};
+var EXW_STEPS=[
+{t:"Chuẩn bị hàng",docs:[["CI", "Commercial Invoice", "Hóa đơn thương mại"], ["PL", "Packing List", "Phiếu đóng gói"], ["COA", "Certificate of Analysis / Quality (nếu hợp đồng yêu cầu)", "Chứng nhận phân tích / chất lượng"]],place:"Xưởng người bán",s:"Kiểm tra chất lượng, đóng gói và đánh dấu hàng theo hợp đồng",b:"Báo thời điểm, địa điểm nhận hàng; cân nhắc cử giám định",d:"Hóa đơn thương mại, packing list",rc:"S",
+cap:"Người bán kiểm tra chất lượng, đóng gói và đánh dấu hàng theo hợp đồng. Chi phí các việc này do người bán chịu.",
+seller:["Kiểm tra, cân, đếm hàng cần thiết để giao","Đóng gói và đánh dấu hàng phù hợp (trừ hàng thường vận chuyển không bao gói)","Chuẩn bị hóa đơn thương mại và chứng từ hợp đồng yêu cầu"],
+buyer:["Báo cho người bán thời điểm và địa điểm cụ thể sẽ nhận hàng trong khu vực đã thỏa thuận","Cân nhắc cử giám định độc lập kiểm hàng trước khi nhận"],
+tip:"Rủi ro giao hàng của EXW là Cao. Ghi rõ quy cách đóng gói, ký mã hiệu và tiêu chuẩn kiểm tra trong hợp đồng, và yêu cầu giám định trước giao."},
+{t:"Giao hàng tại xưởng",docs:[["DR", "Delivery Receipt", "Biên bản giao nhận hàng"], ["IC", "Inspection Certificate (nếu thuê giám định)", "Chứng thư giám định"]],place:"Điểm giao đã thỏa thuận",s:"Đặt hàng dưới quyền định đoạt của người mua, chưa bốc lên xe",b:"Nhận hàng, kiểm số lượng và tình trạng, lập biên bản",d:"Biên bản giao nhận",rc:"S",
+cap:"Người bán đặt hàng dưới quyền định đoạt của người mua tại địa điểm quy định, chưa bốc lên xe. Rủi ro chuyển sang người mua từ thời điểm này.",
+seller:["Đặt hàng tại địa điểm giao đã thỏa thuận, chưa bốc lên phương tiện","Không phải làm chứng từ vận tải hay mua bảo hiểm"],
+buyer:["Tiếp nhận, kiểm tra số lượng và tình trạng hàng","Chịu mọi rủi ro mất mát, hư hỏng kể từ lúc này"],
+tip:"Lập biên bản giao nhận và chụp ảnh hiện trạng ngay khi nhận. Bảo hiểm cần có hiệu lực từ thời điểm này."},
+{t:"Thuê xe & bốc hàng",docs:[["TO", "Transport Order", "Lệnh điều xe / vận chuyển"], ["BKG", "Booking Confirmation", "Xác nhận đặt chỗ"], ["EIR", "Equipment Interchange Receipt (hàng container)", "Phiếu giao nhận container"]],place:"Trên xe tải",s:"Không phải bốc hàng. Nếu giúp bốc thì rủi ro và chi phí của người mua",b:"Thuê xe hoặc forwarder, bốc hàng, trả cước",d:"Booking xe, lệnh giao hàng",rc:"B",
+cap:"Người mua tự thuê phương tiện và bốc hàng. Nếu người bán giúp bốc hàng, việc đó thực hiện trên rủi ro và chi phí của người mua.",
+seller:["Không có nghĩa vụ bốc hàng lên xe","Nếu được nhờ bốc hàng thì làm theo yêu cầu, rủi ro và chi phí thuộc người mua"],
+buyer:["Thuê xe hoặc forwarder, chịu cước và chi phí bốc hàng","Chọn đơn vị vận tải có kinh nghiệm xếp dỡ và bảo hiểm trách nhiệm"],
+tip:"Ghi rõ trong hợp đồng ai bốc hàng. Nếu muốn người bán bốc hàng và làm thủ tục xuất khẩu, nên dùng FCA."},
+{t:"Thông quan xuất khẩu",docs:[["EXD", "Export Customs Declaration", "Tờ khai hải quan xuất khẩu"], ["C/O", "Certificate of Origin (nếu cần)", "Giấy chứng nhận xuất xứ"], ["EL", "Export Licence / Permit (nếu có)", "Giấy phép xuất khẩu"]],place:"Hải quan nước xuất khẩu",s:"Hỗ trợ thông tin, chứng từ khi người mua yêu cầu",b:"Khai báo, nộp thuế và phí xuất khẩu, xin giấy phép nếu có",d:"Tờ khai xuất khẩu, giấy phép nếu có",rc:"B",
+cap:"Người mua chịu trách nhiệm thông quan xuất khẩu tại nước người bán. Người bán chỉ hỗ trợ thông tin và chứng từ khi được yêu cầu.",
+seller:["Hỗ trợ thông tin, chứng từ cho thủ tục xuất khẩu khi người mua yêu cầu (rủi ro và chi phí của người mua)"],
+buyer:["Làm hoặc ủy quyền khai báo, nộp thuế và phí xuất khẩu, xin giấy phép nếu có","Hoàn trả chi phí người bán đã bỏ ra để hỗ trợ"],
+tip:"Đây là điểm yếu của EXW. Nếu chưa có đại lý tại nước xuất khẩu, nên chọn FCA."},
+{t:"Vận chuyển quốc tế",docs:[["B/L", "Bill of Lading", "Vận đơn đường biển"], ["SWB", "Sea Waybill (thay B/L nếu có)", "Giấy gửi hàng đường biển"], ["AWB", "Air Waybill (nếu đi đường hàng không)", "Vận đơn hàng không"], ["INS", "Marine Insurance Certificate / Policy (ICC A)", "Giấy chứng nhận / đơn bảo hiểm hàng hóa"]],place:"Trên tàu (ví dụ)",s:null,b:"Ký hợp đồng vận tải, trả cước, tự mua bảo hiểm ICC (A)",d:"Vận đơn, giấy chứng nhận bảo hiểm",rc:"B",
+cap:"Người mua trả cước và chịu rủi ro suốt chặng vận chuyển (ví dụ đường biển). Người bán không có nghĩa vụ mua bảo hiểm.",
+seller:["Không có nghĩa vụ vận chuyển hoặc bảo hiểm"],
+buyer:["Ký hợp đồng vận tải, trả cước, nhận vận đơn","Tự mua bảo hiểm hàng hóa, khuyến nghị ICC (A), tối thiểu 110% giá trị"],
+tip:"Mua bảo hiểm có hiệu lực từ cửa xưởng người bán, không chỉ từ cảng. Để hở đoạn đầu là lỗi hay gặp."},
+{t:"Thông quan nhập khẩu",docs:[["IMD", "Import Customs Declaration", "Tờ khai hải quan nhập khẩu"], ["A/N", "Arrival Notice", "Thông báo hàng đến"], ["D/O", "Delivery Order", "Lệnh giao hàng"], ["CI · PL · B/L", "Import document set (Invoice, Packing List, B/L)", "Bộ chứng từ nhập khẩu"]],place:"Hải quan nước nhập khẩu",
+s:null,
+b:"Khai báo, nộp thuế và phí nhập khẩu; nhận hàng từ tàu",
+d:"Tờ khai nhập khẩu, vận đơn, hóa đơn",rc:"B",
+cap:"Hàng được dỡ xuống bãi cảng đến. Người mua khai báo nhập khẩu, nộp thuế và phí; sau khi thông quan hàng mới được đưa đi.",
+seller:["Không có nghĩa vụ ở bước này"],
+buyer:["Khai báo nhập khẩu, nộp thuế và phí","Nhận hàng dỡ từ tàu, xử lý phí cảng và phí lưu bãi nếu có","Chỉ đưa hàng đi sau khi được thông quan"],
+tip:"Chuẩn bị đủ bộ chứng từ (vận đơn, hóa đơn, packing list, CO nếu cần) trước khi tàu đến để tránh phí lưu bãi."},
+{t:"Vận chuyển nội địa & nhập kho",docs:[["DN", "Delivery Note", "Phiếu giao hàng nội địa"], ["GRN", "Goods Receipt Note", "Phiếu / biên bản nhập kho"], ["PA", "Payment Advice / T/T Remittance (hoặc L/C)", "Chứng từ thanh toán / giấy báo chuyển tiền"]],place:"Kho người mua",
+s:"Nhận thanh toán theo hợp đồng",
+b:"Thuê xe chở hàng về kho, kiểm tra, nhập kho, thanh toán",
+d:"Biên bản nhập kho, chứng từ thanh toán",rc:"B",
+cap:"Sau thông quan, hàng được bốc lên xe tải nội địa chở về kho người mua. Người mua kiểm tra, nhập kho và thanh toán cho người bán theo hợp đồng.",
+seller:["Nhận thanh toán theo hợp đồng (Incoterms không quy định thanh toán)"],
+buyer:["Bốc hàng lên xe, thuê xe vận chuyển nội địa, chịu cước và rủi ro cho đến khi hàng vào kho","Kiểm tra số lượng, chất lượng, nhập kho và thanh toán theo hợp đồng"],
+tip:"Bảo hiểm cần phủ đến tận kho của người mua (điều khoản kho tới kho). Thanh toán qua L/C hoặc TT đối ứng chứng từ và giám định, tránh trả trước 100%."}
+];
+var CODE="EXW",TERM=TERMS.EXW,STEPS=EXW_STEPS,PIC=PICS.EXW,COSTA=COST.EXW,XP=2;
+function picHTML(k){
+var S='<span class="pic S">Người bán</span>',B='<span class="pic B">Người mua</span>';
+return k==="S"?S:k==="B"?B:S+'<span class="arr">+</span>'+B;
+}
+function riskOf(i){return XP>=i+1?"S":XP<=i?"B":"SB"}
+var stepsEl=$("#steps"),colsEl=$("#cols");
+var RL=["Bước","Hàng ở đâu","Người bán làm","Người mua làm","Các loại chứng từ","Chịu rủi ro","Chịu chi phí"];
+var NM={S:"Người bán",B:"Người mua"};
+function buildSteps(){
+stepsEl.innerHTML="";
+STEPS.forEach(function(s,i){
+var b=document.createElement("button");b.className="step";b.type="button";
+b.innerHTML='<span class="n">'+(i+1)+'</span><span class="tx"><span>'+s.t+'</span><span class="pics">'+picHTML(PIC[i])+'</span></span>';
+b.addEventListener("click",function(){seek(i/7+0.0005)});
+stepsEl.appendChild(b);
+});
+}
+function buildLanes(){
+var h="";
+for(var r=0;r<RL.length;r++)h+='<div class="rl" style="grid-row:'+(r+1)+'">'+RL[r]+'</div>';
+var xk=Math.min(6,Math.ceil(XP)-1);
+STEPS.forEach(function(s,i){
+var rk=riskOf(i),ck=COSTA[i],c=rk==="S"?"c0":"c1";
+var f=Math.round((XP-i)*100);
+var rtx=rk==="SB"?"Bán → Mua":NM[rk];
+var ctx=ck==="SB"?"Chia hai bên":NM[ck];
+h+='<div class="col" data-i="'+i+'" style="grid-column:'+(i+2)+'">'+
+'<button class="head" type="button"><span class="n">'+(i+1)+'</span><span>'+s.t+'</span></button>'+
+'<div class="node '+c+'"><div class="dotrow"><span class="dot"></span></div><span>'+s.place+'</span></div>'+
+(s.s?'<div class="cell S" data-l="Người bán làm">'+s.s+'</div>':'<div class="cell N" data-l="Người bán làm">Không có nghĩa vụ</div>')+
+(s.b?'<div class="cell B" data-l="Người mua làm">'+s.b+'</div>':'<div class="cell N" data-l="Người mua làm">Không có nghĩa vụ</div>')+
+'<div class="cell L" data-l="Các loại chứng từ"><ul>'+s.docs.map(function(d){return '<li><b>'+d[0]+'</b><span class="en">'+d[1]+'</span><span class="vn">'+d[2]+'</span></li>'}).join("")+'</ul></div>'+
+'<div class="cell R '+rk+(i===xk?' xfer':'')+'" data-l="Chịu rủi ro"'+(rk==="SB"?' style="--f:'+f+'%"':'')+'>'+rtx+'</div>'+
+'<div class="cell K '+ck+'" data-l="Chịu chi phí">'+ctx+'</div></div>';
+});
+colsEl.innerHTML=h;
+var cs=colsEl.querySelectorAll(".col");
+for(var i=0;i<cs.length;i++)(function(i){
+var dr=cs[i].querySelector(".dotrow");
+if(i<6)dr.style.setProperty("--c",riskOf(i+1)==="S"?"var(--seller)":"var(--buyer)");else dr.classList.add("end");
+cs[i].querySelector(".dot").style.setProperty("--c",riskOf(i)==="B"?"var(--buyer)":"var(--seller)");
+cs[i].querySelector(".head").addEventListener("click",function(){seek(i/7+0.0005)});
+})(i);
+}
+function buildNav(){
+var h="";
+GROUPS.forEach(function(g){
+h+='<div class="tg"><span class="gl">'+g.t+'</span>';
+g.c.forEach(function(k){h+='<a class="tb" href="#'+k.toLowerCase()+'" data-k="'+k+'" title="'+TERMS[k].en+'">'+k+'</a>'});
+h+='</div>';
+});
+$("#termnav").innerHTML=h;
+}
+function buildHeader(){
+var t=TERM,R=RECS[CODE];
+$("#h1").textContent=CODE+" – "+t.en+", "+t.vn;
+$("#lead").textContent=t.lead;
+$("#xwhere").textContent=t.where;
+var nm=["Giao hàng","Thanh toán","Bảo hiểm"];
+$("#badges").innerHTML=t.rate.map(function(l,i){return '<span class="badge '+l+'">'+nm[i]+': '+LV[l]+'</span>'}).join("");
+$("#advH").textContent="Khi nào nên chọn "+CODE;
+$("#advP").textContent=ADV[CODE];
+$("#recs").innerHTML=[["Rủi ro giao hàng",R[0]],["Thanh toán",R[1]],["Bảo hiểm",R[2]]].map(function(r,i){
+return '<div class="rec"><div class="rh"><span>'+r[0]+'</span><span class="badge '+t.rate[i]+'">'+LV[t.rate[i]]+'</span></div><div>'+r[1]+'</div></div>'}).join("");
+document.querySelectorAll(".tb").forEach(function(a){if(a.getAttribute("data-k")===CODE)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+}
+function setTerm(code,keepP){
+if(!TERMS[code])code="EXW";
+CODE=code;TERM=TERMS[code];XP=TERM.xp;
+STEPS=code==="EXW"?EXW_STEPS:genSteps(code);
+PIC=PICS[code];COSTA=typeof COST[code]==="string"?COST[code].split(""):COST[code];
+buildHeader();buildSteps();buildLanes();
+curIdx=-1;
+if(typeof applyTermScene==="function")applyTermScene();
+if(!keepP)seek(0.0005);else refresh();
+layoutMk();
+}
+var detail=$("#detail");
+function renderDetail(i){
+var s=STEPS[i];
+var li=function(a){return a.map(function(x){return "<li>"+x+"</li>"}).join("")};
+detail.innerHTML=
+'<div class="picbar">PIC bước này: '+picHTML(PIC[i])+'</div>'+
+'<div class="card panel"><h3>Người bán làm gì</h3><ul>'+li(s.seller)+'</ul></div>'+
+'<div class="card panel"><h3>Người mua làm gì</h3><ul>'+li(s.buyer)+'</ul></div>'+
+'<div class="card panel tip"><h3>Lưu ý cho người mua</h3><p>'+s.tip+'</p></div>';
+}
+var P=0.14, playing=false, curIdx=-1, autoFollow=true, showLabels=true;
+var slider=$("#slider"), timeEl=$("#time"), btnPlay=$("#btnPlay");
+function fmt(sec){sec=Math.round(sec);return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2)}
+function seek(p){P=clamp(p);slider.value=Math.round(P*1000);refresh()}
+function setPlaying(v){playing=v;btnPlay.textContent=v?"❚❚ Tạm dừng":(P>=0.999?"↻ Phát lại":"▶ Phát")}
+btnPlay.addEventListener("click",function(){
+if(!playing&&P>=0.999)seek(0);
+setPlaying(!playing);
+});
+slider.addEventListener("input",function(){P=slider.value/1000;setPlaying(false);refresh()});
+$("#btnLabels").addEventListener("click",function(e){
+showLabels=!showLabels;e.currentTarget.setAttribute("aria-pressed",showLabels);
+$("#labels").style.display=showLabels?"block":"none";
+});
+$("#btnFull").addEventListener("click",function(){
+var st=$("#stage");
+try{
+if(document.fullscreenElement){document.exitFullscreen()}
+else if(st.requestFullscreen){var r=st.requestFullscreen();if(r&&r.catch)r.catch(function(){})}
+}catch(e){}
+});
+$("#btnTheme").addEventListener("click",function(){
+var root=document.documentElement;
+var cur=root.getAttribute("data-theme");
+if(!cur)cur=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+root.setAttribute("data-theme",cur==="dark"?"light":"dark");
+});
+function refresh(){
+var idx=Math.min(6,Math.floor(P*7));
+timeEl.textContent=fmt(P*TOTAL)+" / "+fmt(TOTAL);
+if(!playing)btnPlay.textContent=P>=0.999?"↻ Phát lại":"▶ Phát";
+if(idx!==curIdx){
+curIdx=idx;autoFollow=true;
+var tabs=stepsEl.children;
+for(var i=0;i<tabs.length;i++){
+if(i===idx){tabs[i].setAttribute("aria-current","step");
+if(tabs[i].scrollIntoView&&stepsEl.parentNode.scrollWidth>stepsEl.parentNode.clientWidth){
+stepsEl.parentNode.scrollLeft=tabs[i].offsetLeft-20}
+}else tabs[i].removeAttribute("aria-current");
+}
+$("#caption").textContent=STEPS[idx].cap;
+renderDetail(idx);
+var cs=colsEl.querySelectorAll(".col");
+for(var j=0;j<cs.length;j++)cs[j].classList.toggle("sel",j===idx);
+updateLabelState();
+}
+}
+var T=window.THREE;
+var wall,posts,boothX,boothN,renderer,scene,camera,crates=[],truck,truck2,wallMat,stampW,ship,buyerW,sellerW,flagMesh,flagMat,marker,markerMat,stampX,stampN,doc,labelEls=[];
+var target={x:-19,y:1.5,z:1},radius=26,theta=-0.35,phi=1.05;
+var FOCUS=[{x:-19,r:26},{x:-14,r:24},{x:-11,r:26},{x:5,r:30},{x:14,r:46},{x:43,r:30},{x:55,r:36}];
+var DEF={theta:-0.35,phi:1.05};
+var LABELS=[];
+var RISKLBL={EXW:"Điểm giao EXW · Chuyển rủi ro",FCA:"Bốc lên xe người mua · Chuyển rủi ro",CPT:"Giao người chuyên chở đầu tiên · Chuyển rủi ro",CIP:"Giao người chuyên chở đầu tiên · Chuyển rủi ro",
+FAS:"Dọc mạn tàu · Chuyển rủi ro",FOB:"Hàng đã lên tàu · Chuyển rủi ro",CFR:"Hàng đã lên tàu · Chuyển rủi ro",CIF:"Hàng đã lên tàu · Chuyển rủi ro",
+DAP:"Đến kho, chưa dỡ · Chuyển rủi ro",DDP:"Đến kho, chưa dỡ · Chuyển rủi ro",DPU:"Đã dỡ hàng · Chuyển rủi ro"};
+var WALL={exw:{x:-9.85,z:1.7,w:6.6,ax:"x"},fca:{x:-12.3,z:4.2,w:6.4,ax:"z"},carrier:{x:-12.3,z:4.2,w:6.4,ax:"z"},
+fas:{x:10,z:2.9,w:5.6,ax:"z"},fob:{x:12.9,z:-1.2,w:5.6,ax:"x"},cfr:{x:12.9,z:-1.2,w:5.6,ax:"x"},cif:{x:12.9,z:-1.2,w:5.6,ax:"x"},
+dap:{x:57.4,z:6,w:4.6,ax:"x"},ddp:{x:57.4,z:6,w:4.6,ax:"x"},dpu:{x:63.4,z:3.7,w:7,ax:"z"}};
+function o(k){return k==="S"?"người bán":"người mua"}
+function buildLabels(){
+var t=TERM,D=/^D/.test(CODE),W=WALL[t.dlv],k=Math.ceil(XP)-1,on=(XP%1===0&&XP<7)?[k,k+1]:[Math.min(6,k)];
+var tl=CODE==="EXW"?"Xe tải do người mua thuê":CODE==="FCA"?"Xe do người mua chỉ định":(CODE==="CPT"||CODE==="CIP")?"Xe người chuyên chở · người bán thuê":"Xe tải của người bán";
+LABELS=[
+{t:"Xưởng người bán",a:[-21,5.3,-4],on:[0,1]},
+{t:"Đóng gói & đánh dấu hàng",a:[-19,2,0.4],on:[0]},
+{t:RISKLBL[CODE],cls:"risk",a:[W.x,3.9,W.z],on:on},
+{t:tl,f:function(){return [truck.position.x-1,3.4,6]},on:CODE==="EXW"?[2,3]:[1,2]},
+{t:"Hải quan xuất khẩu · "+o(t.exp),a:[1,4.1,2.5],on:[3]},
+{t:"Cảng đi · xếp hàng lên tàu",a:[9.5,3.2,-4],on:[3]},
+{t:"Tàu · cước "+o(t.main)+" trả",f:function(){return [ship.position.x,3.4,-2]},on:[4]}
+];
+if(t.ins)LABELS.push({t:"Bảo hiểm ICC ("+t.ins+") · người bán mua",cls:"ins",f:function(){return [ship.position.x,5.2,-2]},on:[4]});
+LABELS=LABELS.concat([
+{t:"Bãi cảng đến · chờ thông quan",a:[39.5,2.7,3.5],on:[5]},
+{t:"Hải quan nhập khẩu · "+o(t.imp),a:[42,4.1,2.5],on:[5]},
+{t:"Xe nội địa của "+(D?"người bán":"người mua"),f:function(){return [truck2.position.x-1,3.4,6]},on:[5,6]},
+{t:D?"Kho người mua · nơi giao hàng":"Kho người mua · nhập kho",a:[66.5,5.3,-3],on:[6]}
+]);
+}
+function mat(c){return new T.MeshLambertMaterial({color:c})}
+function box(w,h,d,c){return new T.Mesh(new T.BoxGeometry(w,h,d),mat(c))}
+function plane(w,d,c,x,y,z){var m=new T.Mesh(new T.PlaneGeometry(w,d),mat(c));m.rotation.x=-Math.PI/2;m.position.set(x,y,z);return m}
+function person(c){
+var g=new T.Group();
+var b=new T.Mesh(new T.CylinderGeometry(.32,.38,1.1,10),mat(c));b.position.y=.65;g.add(b);
+var h=new T.Mesh(new T.SphereGeometry(.3,12,10),mat(0xf0c8a0));h.position.y=1.5;g.add(h);
+var hat=new T.Mesh(new T.CylinderGeometry(.28,.34,.18,10),mat(0xf4c542));hat.position.y=1.76;g.add(hat);
+return g;
+}
+function tree(x,z,s){
+var g=new T.Group();
+var tr=new T.Mesh(new T.CylinderGeometry(.18,.22,1,6),mat(0x7b5a3a));tr.position.y=.5;g.add(tr);
+var c=new T.Mesh(new T.ConeGeometry(1.1,2.6,7),mat(0x3f8f4a));c.position.y=2.2;g.add(c);
+g.position.set(x,0,z);g.scale.setScalar(s||1);return g;
+}
+function booth(x,z,roof){
+var g=new T.Group();
+var b=box(1.8,2,1.8,0xffffff);b.position.y=1;g.add(b);
+var r=box(2.3,.3,2.3,roof);r.position.y=2.15;g.add(r);g.userData.roof=r;
+var p=new T.Mesh(new T.CylinderGeometry(.05,.05,2,6),mat(0x444444));p.position.set(.8,3.2,.8);g.add(p);
+g.position.set(x,0,z);return g;
+}
+function stamp(x,z,y){
+var m=new T.Mesh(new T.SphereGeometry(.6,16,12),mat(0x2eb35a));
+m.position.set(x,y||3.5,z);m.scale.setScalar(0.001);return m;
+}
+function makeTruck(cabColor){
+var tr=new T.Group();
+var tb=box(4.4,.3,2.3,0x6b7078);tb.position.set(-1.2,1,0);tr.add(tb);
+var cab=box(1.7,1.6,2.2,cabColor);cab.position.set(1.9,1.4,0);tr.add(cab);tr.userData.cab=cab;
+var wnd=box(.05,.7,1.7,0xcfe3ff);wnd.position.set(2.77,1.7,0);tr.add(wnd);
+[[-2.6,1],[-2.6,-1],[0,1],[0,-1],[2.2,1],[2.2,-1]].forEach(function(p){
+var wh=new T.Mesh(new T.CylinderGeometry(.5,.5,.35,12),mat(0x222222));wh.rotation.x=Math.PI/2;wh.position.set(p[0],.5,p[1]);tr.add(wh)});
+return tr;
+}
+function initScene(){
+var cv=$("#cv");
+renderer=new T.WebGLRenderer({canvas:cv,antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+scene=new T.Scene();
+camera=new T.PerspectiveCamera(42,2,0.5,400);
+scene.add(new T.HemisphereLight(0xffffff,0x9aa58f,0.85));
+var sun=new T.DirectionalLight(0xffffff,0.75);sun.position.set(-20,40,25);scene.add(sun);
+scene.add(plane(52,50,0x8fc27a,-14,0,0));
+scene.add(plane(60,50,0x8fc27a,66,0,0));
+scene.add(plane(24,50,0x6fb4dc,24,-0.04,0));
+scene.add(plane(52,4,0x9b9a94,-14,0.012,6));
+scene.add(plane(4.5,22,0xb9b5aa,10,0.02,-2));
+scene.add(plane(4.5,22,0xb9b5aa,37.8,0.02,-2));
+scene.add(plane(62,3,0x9b9a94,69,0.012,6));
+var f=new T.Group();
+var body=box(9,4,6,0xe9e3d5);body.position.set(-21,2,-4);f.add(body);
+var roof=box(9.6,.5,6.6,0xc9573a);roof.position.set(-21,4.25,-4);f.add(roof);
+var door=box(2,2.6,.12,0x5a4a3a);door.position.set(-19,1.3,-0.95);f.add(door);
+var ch=box(.9,2.2,.9,0x9a8f7e);ch.position.set(-24,5.3,-5.5);f.add(ch);
+var fp=new T.Mesh(new T.CylinderGeometry(.06,.06,2.4,6),mat(0x444444));fp.position.set(-17.5,5.4,-4);f.add(fp);
+var ff=box(1.2,.7,.05,0xd9782b);ff.position.set(-16.9,6.2,-4);f.add(ff);
+scene.add(f);
+var w=new T.Group();
+var wb=box(9,4,6,0xdfe6f2);wb.position.set(66.5,2,-3);w.add(wb);
+var wr=box(9.6,.5,6.6,0x2f6fdb);wr.position.set(66.5,4.25,-3);w.add(wr);
+var wd=box(2.4,2.8,.12,0x3b4a66);wd.position.set(63,1.4,.05);w.add(wd);
+scene.add(w);
+var cr=new T.Group();
+[[-1.2,0],[1.2,0]].forEach(function(o){var l=box(.4,7,.4,0xd9693c);l.position.set(11.5+o[0],3.5,-7);cr.add(l)});
+var bm=box(8,.5,.7,0xd9693c);bm.position.set(14.5,7,-7);cr.add(bm);
+scene.add(cr);
+boothX=booth(1,2.5,0x2f6fdb);boothN=booth(42,2.5,0x2f6fdb);scene.add(boothX);scene.add(boothN);
+stampX=stamp(1,2.5);stampN=stamp(42,2.5);stampW=stamp(64.9,-3,5.7);scene.add(stampX);scene.add(stampN);scene.add(stampW);
+[[-31,-9],[-29,-16],[-12,-14],[-5,-10],[5,-7],[8,-15],[-35,12],[-21,15],[-2,13],[7,12],[44,10],[56,8],[58,-12],[41,-14],[34,-16],[18,-18]].forEach(function(p,i){
+if(p[0]>12&&p[0]<36)return; scene.add(tree(p[0],p[1],0.8+(i%3)*0.2));
+});
+markerMat=new T.MeshBasicMaterial({color:0xf4c542,transparent:true,opacity:.5});
+marker=new T.Mesh(new T.PlaneGeometry(5.4,3.8),markerMat);marker.rotation.x=-Math.PI/2;marker.position.set(-12.5,.03,1.4);scene.add(marker);
+flagMat=mat(0xd9782b);flagMesh=new T.Mesh(new T.BoxGeometry(1.1,.7,.06),flagMat);scene.add(flagMesh);
+wallMat=new T.MeshBasicMaterial({color:0xff1f6b,transparent:true,opacity:.5,side:T.DoubleSide});
+wall=new T.Mesh(new T.PlaneGeometry(1,3.6),wallMat);scene.add(wall);
+posts=[box(.18,3.8,.18,0xff1f6b),box(.18,3.8,.18,0xff1f6b)];scene.add(posts[0]);scene.add(posts[1]);
+sellerW=person(0xd9782b);sellerW.position.set(-15.2,0,-.2);scene.add(sellerW);
+buyerW=person(0x2f6fdb);buyerW.position.set(-8.2,0,3.2);buyerW.visible=false;scene.add(buyerW);
+truck=makeTruck(0x2f6fdb);truck.position.set(-38,0,6);scene.add(truck);
+truck2=makeTruck(0x1f9d8a);truck2.position.set(47.5,0,6);truck2.scale.setScalar(0.001);scene.add(truck2);
+ship=new T.Group();
+var hull=box(7,1.2,2.8,0x34495e);hull.position.y=.4;ship.add(hull);
+var stripe=box(7.02,.25,2.82,0xc0392b);stripe.position.y=.0;ship.add(stripe);
+var cabin=box(1.6,1.6,2.2,0xeeeeee);cabin.position.set(-2.5,1.8,0);ship.add(cabin);
+var fun=new T.Mesh(new T.CylinderGeometry(.3,.3,.9,8),mat(0xd9782b));fun.position.set(-2.5,3,0);ship.add(fun);
+ship.position.set(16,0,-2);scene.add(ship);
+var geo=new T.BoxGeometry(1,1,1),eg=new T.EdgesGeometry(geo);
+for(var i=0;i<6;i++){
+var c=new T.Mesh(geo,mat(0xc99a5b));
+c.add(new T.LineSegments(eg,new T.LineBasicMaterial({color:0x5a3d1c})));
+var tape=box(1.02,.06,.25,0xf1e3c4);tape.position.y=.5;c.add(tape);
+scene.add(c);crates.push(c);
+}
+doc=box(.6,.08,.8,0xffffff);doc.visible=false;scene.add(doc);
+applyTermScene();
+applyTheme();
+resize();
+if(window.ResizeObserver)new ResizeObserver(resize).observe($("#stage"));
+window.addEventListener("resize",resize);
+document.addEventListener("fullscreenchange",resize);
+new MutationObserver(applyTheme).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+if(window.matchMedia)matchMedia("(prefers-color-scheme: dark)").addEventListener&&matchMedia("(prefers-color-scheme: dark)").addEventListener("change",applyTheme);
+bindPointer(cv);
+}
+function applyTermScene(){
+buildLabels();
+var lc=$("#labels");if(!lc)return;lc.innerHTML="";
+LABELS.forEach(function(L){
+var e=document.createElement("div");e.className="lbl"+(L.cls?" "+L.cls:"");e.innerHTML="<i></i><span>"+L.t+"</span>";lc.appendChild(e);L.el=e;
+});
+if(!renderer)return;
+var t=TERM,W=WALL[t.dlv];
+wall.scale.x=W.w;wall.position.set(W.x,1.8,W.z);wall.rotation.y=W.ax==="x"?Math.PI/2:0;
+var e0=W.ax==="x"?[W.x,W.z-W.w/2]:[W.x-W.w/2,W.z],e1=W.ax==="x"?[W.x,W.z+W.w/2]:[W.x+W.w/2,W.z];
+posts[0].position.set(e0[0],1.9,e0[1]);posts[1].position.set(e1[0],1.9,e1[1]);
+flagMesh.position.set(e0[0]+(W.ax==="x"?0.55:0.55),3.45,e0[1]);flagMesh.rotation.y=0;
+var SC=0xd9782b,BC=0x2f6fdb;
+truck.userData.cab.material.color.setHex(t.pre==="S"?SC:BC);
+truck2.userData.cab.material.color.setHex(/^D/.test(CODE)?SC:0x1f9d8a);
+boothX.userData.roof.material.color.setHex(t.exp==="S"?SC:BC);
+boothN.userData.roof.material.color.setHex(t.imp==="S"?SC:BC);
+marker.visible=t.dlv==="exw";
+}
+function applyTheme(){
+if(!renderer)return;
+var v=getComputedStyle(document.documentElement).getPropertyValue("--scene-bg").trim()||"#e7eeee";
+renderer.setClearColor(new T.Color(v),1);
+}
+function resize(){
+var st=$("#stage");var w=st.clientWidth,h=st.clientHeight;
+if(!w||!h)return;
+renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+}
+function mix(a,b,t){return [lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)]}
+function updateLabelState(){
+LABELS.forEach(function(L){if(L.el)L.el.classList.toggle("on",L.on.indexOf(curIdx)>=0)});
+}
+var clock=0;
+function updateScene(s,dt){
+clock+=dt;
+var tx;
+var E=CODE==="EXW";
+if(E){if(s<2)tx=-38;else if(s<3)tx=lerp(-38,-12,sstep((s-2)/0.35));else if(s<3.45)tx=lerp(-12,0,sstep((s-3)/0.3));else tx=lerp(0,10,sstep((s-3.45)/0.17));}
+else{if(s<1)tx=-38;else if(s<2)tx=lerp(-38,-12,sstep((s-1)/0.3));else if(s<3)tx=lerp(-12,0,sstep((s-2.1)/0.8));else if(s<3.45)tx=0;else tx=lerp(0,10,sstep((s-3.45)/0.17));}
+truck.position.x=tx;
+var sx=lerp(16,31.5,sstep((s-4.1)/0.6));
+ship.position.x=sx;ship.position.y=Math.sin(clock*1.6)*0.07;
+var t2x;
+if(s<6.4)t2x=47.5;else if(s<6.75)t2x=lerp(47.5,61,sstep((s-6.4)/.35));else t2x=61;
+truck2.position.x=t2x;truck2.scale.setScalar(Math.max(sstep((s-5.8)/.15),0.001));
+for(var i=0;i<6;i++){
+var col=i%3,row=(i/3)|0;
+var r0=[-23+i*1.5,.5,.4], yard=[-13.9+col*1.4,.5,.7+row*1.4];
+var bed=[tx-2.6+col*1.3,1.55,6-.5+row*1.0];
+var shp=[sx-1.4+col*1.2,1.6+ship.position.y,-2.5+row*1.0];
+var quay=[38.4+col*1.3,.5,3.0+row*1.1], qo=[8.4+col*1.2,.5,0.2+row*1.1];
+var bed2=[t2x-2.6+col*1.3,1.55,6-.5+row*1.0], fin=[64.4+col*1.25,.5,1.0+row*1.2];
+var p,sc=1,arc=0,t;
+if(s<1){t=clamp(s*1.6-i*.12);sc=sstep(t);p=r0}
+else if(!E&&s<2){t=sstep(clamp((s-1.35)/.6*1.5-i*.1));p=mix(r0,bed,t);arc=Math.sin(t*Math.PI)*2.2}
+else if(!E&&s<3.62){p=bed}
+else if(s<2){t=sstep(clamp((s-1)*1.5-i*.1));p=mix(r0,yard,t);arc=Math.sin(t*Math.PI)*.8}
+else if(s<3){t=sstep(clamp((s-2.35)/.65*1.5-i*.1));p=mix(yard,bed,t);arc=Math.sin(t*Math.PI)*2.2}
+else if(s<3.62){p=bed}
+else if(s<3.76){t=sstep(clamp((s-3.62)/.14*1.5-i*.1));p=mix(bed,qo,t);arc=Math.sin(t*Math.PI)*1.6}
+else if(s<3.8){p=qo}
+else if(s<3.96){t=sstep(clamp((s-3.8)/.16*1.5-i*.1));p=mix(qo,shp,t);arc=Math.sin(t*Math.PI)*2.8}
+else if(s<5){p=shp}
+else if(s<5.35){t=sstep(clamp((s-5)/.35*1.5-i*.1));p=mix(shp,quay,t);arc=Math.sin(t*Math.PI)*2.6}
+else if(s<6){p=quay}
+else if(s<6.35){t=sstep(clamp((s-6)/.35*1.5-i*.1));p=mix(quay,bed2,t);arc=Math.sin(t*Math.PI)*2.6}
+else if(s<6.75){p=bed2}
+else{t=sstep(clamp((s-6.75)/.24*1.5-i*.1));p=mix(bed2,fin,t);arc=Math.sin(t*Math.PI)*.9;sc=lerp(1,.85,t)}
+crates[i].position.set(p[0],p[1]+arc,p[2]);
+crates[i].scale.setScalar(Math.max(sc,0.001));
+}
+var xs=s>3?sstep((s-3.3)/.12):0, ns=s>5?sstep((s-5.6)/.15):0, ws=s>6.8?sstep((s-6.9)/.09):0;
+stampX.scale.setScalar(Math.max(xs,0.001));stampN.scale.setScalar(Math.max(ns,0.001));stampW.scale.setScalar(Math.max(ws,0.001));
+var seller=s<XP-0.02||XP>=7&&s<6.99;
+flagMat.color.setHex(seller?0xd9782b:0x2f6fdb);
+flagMesh.scale.setScalar(1+(seller?0:Math.max(0,.25-Math.abs(s-XP))*1.2));
+markerMat.opacity=.35+.22*Math.sin(clock*3);
+wallMat.opacity=.35+.2*Math.sin(clock*3);
+buyerW.visible=(TERM.dlv==="exw"||TERM.dlv==="fca")&&s>=XP;
+sellerW.position.y=Math.abs(Math.sin(clock*3))*.12*(s<2?1:0.2);
+buyerW.position.y=Math.abs(Math.sin(clock*3+1))*.1;
+var dp=null,dk=0;
+if(s>=3&&s<3.3){dk=sstep((s-3)/.3);dp=mix([-14.5,1.8,-.2],[1,2.4,2.5],dk)}
+else if(s>=5.4&&s<5.6){dk=sstep((s-5.4)/.2);dp=mix([39.5,2.2,3.2],[42,2.6,2.5],dk)}
+if(dp){doc.visible=true;doc.position.set(dp[0],dp[1]+Math.sin(dk*Math.PI)*1.4,dp[2]);doc.rotation.y=clock*3}
+else doc.visible=false;
+var F=(!E&&Math.floor(s)===2)?{x:-6,r:30}:FOCUS[Math.min(6,Math.floor(s))];
+if(autoFollow){target.x+=(F.x-target.x)*Math.min(1,dt*3);radius+=(F.r-radius)*Math.min(1,dt*3)}
+}
+function placeCamera(){
+camera.position.set(
+target.x+radius*Math.sin(phi)*Math.sin(theta),
+target.y+radius*Math.cos(phi),
+target.z+radius*Math.sin(phi)*Math.cos(theta));
+camera.lookAt(target.x,target.y,target.z);
+camera.updateMatrixWorld();
+}
+var v3;
+function updateLabels(){
+var st=$("#stage"),w=st.clientWidth,h=st.clientHeight;
+v3=v3||new T.Vector3();
+var list=[];
+LABELS.forEach(function(L){
+var a=L.f?L.f():L.a;
+v3.set(a[0],a[1],a[2]).project(camera);
+var on=L.on.indexOf(curIdx)>=0;
+var near=Math.abs(a[0]-target.x)<24;
+var vis=v3.z<1&&Math.abs(v3.x)<1.05&&Math.abs(v3.y)<1.05&&(on||near);
+L.el.style.display=vis?"flex":"none";
+if(vis){
+var pr=L.cls==="risk"?3:on?2:1;
+list.push({L:L,x:(v3.x*.5+.5)*w,y:(-v3.y*.5+.5)*h,pr:pr});
+}
+});
+list.sort(function(a,b){return b.pr-a.pr});
+var placed=[];
+list.forEach(function(it){
+var el=it.L.el,ew=el.offsetWidth,eh=el.offsetHeight;
+var cx=it.x,top=it.y-eh*1.1,tries=0;
+function hit(){for(var k=0;k<placed.length;k++){var p=placed[k];
+if(cx-ew/2<p.r+4&&cx+ew/2>p.l-4&&top<p.b+3&&top+eh>p.t-3)return p}return null}
+var p;
+var top0=top,dir=-1;
+while((p=hit())&&tries<14){
+tries++;
+if(dir<0){top=p.t-eh-4;if(top<2){dir=1;top=top0}}
+else top=p.b+4;
+}
+top=Math.max(2,Math.min(h-eh-2,top));
+placed.push({l:cx-ew/2,r:cx+ew/2,t:top,b:top+eh});
+el.style.transform="translate("+(cx-ew/2).toFixed(1)+"px,"+top.toFixed(1)+"px)";
+el.style.zIndex=it.pr*10;
+});
+}
+var ptrs={},lastPinch=0;
+function bindPointer(cv){
+cv.addEventListener("contextmenu",function(e){e.preventDefault()});
+cv.addEventListener("pointerdown",function(e){
+cv.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};autoFollow=false;
+});
+cv.addEventListener("pointermove",function(e){
+var p=ptrs[e.pointerId];if(!p)return;
+var dx=e.clientX-p.x,dy=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;
+var ids=Object.keys(ptrs);
+if(ids.length>=2){
+var a=ptrs[ids[0]],b=ptrs[ids[1]];var d=Math.hypot(a.x-b.x,a.y-b.y);
+if(lastPinch)radius=clamp(radius*(lastPinch/d),8,90);lastPinch=d;return;
+}
+if(e.shiftKey||e.buttons===2){
+var k=radius*0.0016;
+target.x-=Math.cos(theta)*dx*k;target.z+=Math.sin(theta)*dx*k;
+target.z-=Math.cos(theta)*dy*k;target.x-=Math.sin(theta)*dy*k;
+}else{
+theta-=dx*0.006;phi=clamp(phi-dy*0.005,0.25,1.45);
+}
+});
+function up(e){delete ptrs[e.pointerId];lastPinch=0}
+cv.addEventListener("pointerup",up);cv.addEventListener("pointercancel",up);
+cv.addEventListener("wheel",function(e){
+e.preventDefault();autoFollow=false;
+radius=clamp(radius*(e.deltaY>0?1.1:0.91),8,90);
+},{passive:false});
+document.querySelectorAll(".pad button").forEach(function(b){
+b.addEventListener("click",function(){
+var k=b.getAttribute("data-k");
+if(k==="l")theta+=0.18;if(k==="r")theta-=0.18;
+if(k==="u")phi=clamp(phi-0.12,0.25,1.45);if(k==="d")phi=clamp(phi+0.12,0.25,1.45);
+if(k==="c"){theta=DEF.theta;phi=DEF.phi;autoFollow=true}
+});
+});
+}
+var last=performance.now();
+function frame(now){
+var dt=Math.min(0.1,(now-last)/1000);last=now;
+if(playing){
+P+=dt/TOTAL;
+if(P>=1){P=1;setPlaying(false)}
+slider.value=Math.round(P*1000);
+refresh();
+}
+if(renderer){
+updateScene(Math.min(P*7,6.999),dt);
+placeCamera();
+renderer.render(scene,camera);
+updateLabels();
+}
+requestAnimationFrame(frame);
+}
+try{
+if(!T)throw new Error("no three");
+initScene();
+}catch(err){
+renderer=null;
+$("#nogl").style.display="grid";$("#labels").style.display="none";
+}
+function layoutMk(){
+var w=$("#mwrap"),cs=colsEl.querySelectorAll(".col"),p=$("#mkPill"),l=$("#mkLine");
+if(cs.length<7||!cs[0].offsetWidth)return;
+var i=Math.floor(XP),f=XP-i,x;
+if(f===0)x=i<7?cs[i].offsetLeft-3:cs[6].offsetLeft+cs[6].offsetWidth+3;
+else x=cs[i].offsetLeft+f*cs[i].offsetWidth;
+p.style.left=x+"px";
+var top=p.offsetHeight+6;l.style.left=x+"px";l.style.top=top+"px";l.style.height=Math.max(0,w.clientHeight-top)+"px";
+var x0=cs[0].offsetLeft,x1=cs[6].offsetLeft+cs[6].offsetWidth,bs=$("#bandS"),bb=$("#bandB");
+bs.style.left=x0+"px";bs.style.width=Math.max(0,x-x0-4)+"px";
+bb.style.left=(x+4)+"px";bb.style.width=Math.max(0,x1-x-4)+"px";bb.style.display=x1-x>40?"flex":"none";
+bs.textContent=x1-x>40?"Người bán chịu rủi ro":"Người bán chịu rủi ro đến khi hàng đã dỡ tại nơi đến";
+var pr=p.offsetWidth/2;p.style.transform=x+pr>w.clientWidth?"translateX(-100%)":"translateX(-50%)";
+}
+buildNav();
+setTerm((location.hash||"#exw").slice(1).toUpperCase());
+window.addEventListener("hashchange",function(){setTerm((location.hash||"#exw").slice(1).toUpperCase())});
+window.addEventListener("resize",layoutMk);
+if(window.ResizeObserver)new ResizeObserver(layoutMk).observe(colsEl);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layoutMk);
+refresh();
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
